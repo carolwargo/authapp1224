@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import "./App.css";
 
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
-import Dashboard from "./pages/Dashboard"; // Import the Dashboard component
+import Dashboard from "./pages/Dashboard"; // Example of a protected route
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  // Check if the user is authenticated (based on token or other criteria)
+  // Check for token in localStorage when the app loads
   useEffect(() => {
     const token = localStorage.getItem("authToken");
     if (token) {
-      setIsAuthenticated(true); // Set to true if token exists
+      setIsAuthenticated(true);  // You could add more checks here (e.g., token expiry)
     }
   }, []);
 
@@ -21,10 +21,13 @@ function App() {
     <div className="App">
       <BrowserRouter basename="authapp1224">
         <Routes>
+          {/* Redirect root path to /login */}
+          <Route path="/" element={<Navigate to="/login" />} />
+
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
 
-          {/* Protected Route */}
+          {/* Protected Route Example */}
           <Route
             path="/dashboard"
             element={
