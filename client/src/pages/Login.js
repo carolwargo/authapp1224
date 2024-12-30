@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import axios from 'axios';
-//import { UserContext } from "../UserContext";
+import axiosInstance from '../axiosInstance'; // Import reusable axios instance
 import { Link } from "react-router-dom";
 
 import {
@@ -12,14 +11,13 @@ import {
 } from "mdb-react-ui-kit";
 
 function LoginPage() {
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post("/auth/signup", { email, password })  // Send signup data to backend
+    axiosInstance
+      .post("/auth/signup", { email, password }) // Use axiosInstance
       .then((response) => {
         console.log("Signup successful:", response.data);
         // Handle response, such as redirecting or setting auth state
@@ -28,7 +26,7 @@ function LoginPage() {
         console.error("Error during signup:", error);
       });
   };
-  
+
   return (
     <div className="w3-padding-large w3-padding-48" style={{}}>
       <MDBContainer className="my-5 gradient-form">
@@ -36,34 +34,34 @@ function LoginPage() {
           <MDBCol col="6" className="">
             <div className="d-flex flex-column px-4 ms-5">
               <h1
-          style={{
-            fontSize: "4.5rem",
-          }}
-          className="mb-2"
-        >
-          <span>
-            <i
-              style={{
-                fontFamily: "Raleway",
-                fontSize: "3.75rem",
-                textShadow: "1px 1px 4px black",
-              }}
-            >
-              Con
-            </i>
-          </span>
-          <span
-            className=" fw-bold"
-            style={{
-              fontFamily: "Dancing Script",
-              marginLeft: "-10px",
-              color: "#d32c9a",
-              textShadow: "1px 1px 4px black",
-            }}
-          >
-            Scribe
-          </span>
-        </h1>
+                style={{
+                  fontSize: "4.5rem",
+                }}
+                className="mb-2"
+              >
+                <span>
+                  <i
+                    style={{
+                      fontFamily: "Raleway",
+                      fontSize: "3.75rem",
+                      textShadow: "1px 1px 4px black",
+                    }}
+                  >
+                    Con
+                  </i>
+                </span>
+                <span
+                  className=" fw-bold"
+                  style={{
+                    fontFamily: "Dancing Script",
+                    marginLeft: "-10px",
+                    color: "#d32c9a",
+                    textShadow: "1px 1px 4px black",
+                  }}
+                >
+                  Scribe
+                </span>
+              </h1>
               <p>Login to your account</p>
 
               <form className="login" onSubmit={handleSubmit}>
@@ -83,11 +81,14 @@ function LoginPage() {
                   value={password}
                   onChange={(ev) => setPassword(ev.target.value)}
                 />
-    
+
                 <div className="text-center pt-1 mb-3 pb-1">
                   <MDBBtn
                     className="mb-4 w-100 "
-                    style={{backgroundImage: 'linear-gradient(to right, #f64b65, #fa52ce)'}}
+                    style={{
+                      backgroundImage:
+                        "linear-gradient(to right, #f64b65, #fa52ce)",
+                    }}
                     type="submit"
                   >
                     Login
@@ -112,10 +113,10 @@ function LoginPage() {
               <div className="text-black p-md-5 mx-md-4">
                 <h4 className="mb-4">We are more than just a company</h4>
                 <p className="small mb-0">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat.
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                  sed do eiusmod tempor incididunt ut labore et dolore magna
+                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                  ullamco laboris nisi ut aliquip ex ea commodo consequat.
                 </p>
               </div>
             </div>
@@ -127,5 +128,3 @@ function LoginPage() {
 }
 
 export default LoginPage;
-
-

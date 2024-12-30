@@ -2,9 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 
 import { Link } from "react-router-dom";
-import {
-  MDBBtn,
-} from "mdb-react-ui-kit";
 
 function Signup() {
   const [email, setEmail] = useState("");
@@ -133,17 +130,15 @@ function Signup() {
                 aria-label="Password"
               />
               <div className="text-center pt-1 mb-3 pb-1">
-                <MDBBtn
-                  className="mb-4 w-100 "
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(to right, #f64b65, #fa52ce)",
-                  }}
+                <button
+                 className="btn btn-dark mb-4 w-100" 
+                 data-mdb-ripple-init
+                 variant="secondary"
                   type="submit"
                 >
                   Signup
-                </MDBBtn>
-                <a className="text-muted" href="#!">
+                </button>
+              <a className="text-muted" href="#!">
                   Forgot password?
                 </a>
               </div>

@@ -10,8 +10,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const PORT = process.env.PORT || 5000;
- // Fallback to 5000 if PORT isn't defined
+const PORT = process.env.PORT || 5001;
+ // Fallback to 5001 if PORT isn't defined
 
 // Connect to MongoDB
 connectDB();
