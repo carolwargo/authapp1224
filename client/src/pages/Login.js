@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from 'axios';
 //import { UserContext } from "../UserContext";
 import { Link } from "react-router-dom";
 
@@ -11,17 +12,23 @@ import {
 } from "mdb-react-ui-kit";
 
 function LoginPage() {
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  /*const [redirect, setRedirect] = useState(false);*/
-  //const { setUserInfo } = useContext(UserContext);
-  async function login(ev) {
-    ev.preventDefault();
 
- 
-  }
-
- 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post("/auth/signup", { email, password })  // Send signup data to backend
+      .then((response) => {
+        console.log("Signup successful:", response.data);
+        // Handle response, such as redirecting or setting auth state
+      })
+      .catch((error) => {
+        console.error("Error during signup:", error);
+      });
+  };
+  
   return (
     <div className="w3-padding-large w3-padding-48" style={{}}>
       <MDBContainer className="my-5 gradient-form">
@@ -59,7 +66,7 @@ function LoginPage() {
         </h1>
               <p>Login to your account</p>
 
-              <form className="login" onSubmit={login}>
+              <form className="login" onSubmit={handleSubmit}>
                 <MDBInput
                   wrapperClass="mb-4"
                   placeholder="Email@mail.com"
