@@ -1,12 +1,9 @@
 import React, { useState } from "react";
-import axiosInstance from '../axiosInstance'; // Import reusable axios instance
+import axios from 'axios' 
 import { Link } from "react-router-dom";
 
 import {
   MDBBtn,
-  MDBContainer,
-  MDBRow,
-  MDBCol,
   MDBInput,
 } from "mdb-react-ui-kit";
 
@@ -16,8 +13,7 @@ function LoginPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axiosInstance
-      .post("/auth/signup", { email, password }) // Use axiosInstance
+    axios.post("http://localhost:5001/signup", { email, password }) 
       .then((response) => {
         console.log("Signup successful:", response.data);
         // Handle response, such as redirecting or setting auth state
@@ -29,10 +25,10 @@ function LoginPage() {
 
   return (
     <div className="w3-padding-large w3-padding-48" style={{}}>
-      <MDBContainer className="my-5 gradient-form">
-        <MDBRow>
-          <MDBCol col="6" className="">
-            <div className="d-flex flex-column px-4 ms-5">
+      <div className="container my-2">
+        <div className="row d-flex align-items-center justify-content-center mt-3">
+         <div className=" col-sm-12 col-md-6 col-lg-6 align-items-center justify-content-center">
+            <div className="">
               <h1
                 style={{
                   fontSize: "4.5rem",
@@ -64,7 +60,7 @@ function LoginPage() {
               </h1>
               <p>Login to your account</p>
 
-              <form className="login" onSubmit={handleSubmit}>
+              <form className="login w-100" onSubmit={handleSubmit}>
                 <MDBInput
                   wrapperClass="mb-4"
                   placeholder="Email@mail.com"
@@ -84,7 +80,7 @@ function LoginPage() {
 
                 <div className="text-center pt-1 mb-3 pb-1">
                   <MDBBtn
-                    className="mb-4 w-100 "
+                    className="mb-4 w-100"
                     style={{
                       backgroundImage:
                         "linear-gradient(to right, #f64b65, #fa52ce)",
@@ -106,9 +102,9 @@ function LoginPage() {
                 </Link>
               </div>
             </div>
-          </MDBCol>
+          </div>
 
-          <MDBCol col="6" className="mb-5 w3-hide-small w3-hide-medium">
+          <div className="col-sm-12 col-md-6 col-lg-6 mb-5 w3-hide-small w3-hide-medium">
             <div className="d-flex flex-column justify-content-center gradient-custom-2 h-100 mb-4">
               <div className="text-black p-md-5 mx-md-4">
                 <h4 className="mb-4">We are more than just a company</h4>
@@ -120,9 +116,9 @@ function LoginPage() {
                 </p>
               </div>
             </div>
-          </MDBCol>
-        </MDBRow>
-      </MDBContainer>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
