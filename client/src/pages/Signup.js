@@ -12,7 +12,7 @@ function Signup() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("/auth/signup", { firstname, lastname, email, password }) // Send signup data to backend
+      .post("http://localhost:5001/signup", { firstname, lastname, email, password })
       .then((response) => {
         console.log("Signup successful:", response.data);
         // Handle response, such as redirecting or setting auth state
@@ -84,28 +84,28 @@ function Signup() {
             <form className="signup" onSubmit={handleSubmit}>
             <div className="row d-flex flex-row align-items-center justify-content-center">
             <div className="col-sm-12 col-md-6 col-lg-6">
-            <input
-              className="w-100 mb-3 py-1 shadow-sm rounded-1 border-1"
-    
-                    placeholder=" First Name"
-                    value={firstname}
-                    onChange={(ev) => setFirstName(ev.target.value)}
-                    type="text"
+       
+                  
+              <input
+                  className="w-100 mb-3 py-1 shadow-sm rounded-1 border-1"
+                  placeholder=" First Name"
+                  value={firstname}
+                  onChange={(ev) => setFirstName(ev.target.value)}
+                type="text"
                     autoComplete="first-name"
                     aria-label="First name"
-                  />
+              />
             </div> 
             <div className="col-sm-12 col-md-6 col-lg-6">
             <input
-                       className="w-100 mb-3 py-1 shadow-sm rounded-1 border-1"
-    
-                    placeholder=" Last Name"
-                    value={lastname}
-                    onChange={(ev) => setLastName(ev.target.value)}
-                    type="text"
+                  className="w-100 mb-3 py-1 shadow-sm rounded-1 border-1"
+                  placeholder=" Last Name"
+                  value={lastname}
+                  onChange={(ev) => setLastName(ev.target.value)}
+                type="text"
                     autoComplete="last-name"
                     aria-label="Last name"
-                  />
+              />
             </div> 
             </div>  
          

@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import axios from 'axios' 
+import axios from "axios";
 import { Link } from "react-router-dom";
+import LogoBlack from "../assets/images/Logo/LogoBlack.png";
 
-import {
-  MDBBtn,
-  MDBInput,
-} from "mdb-react-ui-kit";
+import { MDBInput } from "mdb-react-ui-kit";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
@@ -13,25 +11,51 @@ function LoginPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:5001/signup", { email, password }) 
+    axios
+      .post("http://localhost:5001/login", { email, password })
       .then((response) => {
-        console.log("Signup successful:", response.data);
+        console.log("You are logged in:", response.data);
         // Handle response, such as redirecting or setting auth state
       })
       .catch((error) => {
-        console.error("Error during signup:", error);
+        console.error("Login Error:", error);
       });
   };
 
   return (
-    <div className="w3-padding-large w3-padding-48" style={{}}>
+<div>
+  <style>
+    {`.outlined-text {
+  color: white; /* or any color for the text */
+
+  text-shadow: 
+    -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+`}
+  </style>
+
+    <div className="w3-padding-large w3-padding-16" style={{}}>
       <div className="container my-2">
-        <div className="row d-flex align-items-center justify-content-center mt-3">
-         <div className=" col-sm-12 col-md-6 col-lg-6 align-items-center justify-content-center">
+        <div className="row d-flex align-items-center justify-content-center mt-2">
+        <div className="col-sm-12 col-md-3 col-lg-3 mb-3">
+         
+          </div>
+          
+          <div className=" col-sm-12 col-md-6 col-lg-6 align-items-center justify-content-center">
             <div className="">
-              <h1
+            <h3 className="mb-3">Welcome Back!</h3>
+               <h1 style={{fontFamily:'Montserrat'}}><b className="">i</b><span className="outlined-text">j</span><span style={{fontSize:'2rem'}} className="outlined-text">OCK</span>
+               </h1>
+              <div>    <img src={LogoBlack} alt="logo" 
+              style={{width:'10rem'}}/><span className="fw-bold" style={{fontFamily:'Montserrat', fontSize:'3rem'}}>.digital.com</span></div>
+          
+              {/** 
+            <h1
                 style={{
-                  fontSize: "4.5rem",
+                  fontSize: "4rem",
                 }}
                 className="mb-2"
               >
@@ -39,11 +63,10 @@ function LoginPage() {
                   <i
                     style={{
                       fontFamily: "Raleway",
-                      fontSize: "3.75rem",
+                      fontSize: "3.5rem",
                       textShadow: "1px 1px 4px black",
                     }}
-                  >
-                    Con
+                  >Con
                   </i>
                 </span>
                 <span
@@ -58,37 +81,43 @@ function LoginPage() {
                   Scribe
                 </span>
               </h1>
-              <p>Login to your account</p>
+*/}
+
+         <p className="small mb-0">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, ut aliquip ex ea commodo consequat.
+                </p>
+              <p className="mt-3 text-emphasis-dark">Login To Your View Your Account.</p>
 
               <form className="login w-100" onSubmit={handleSubmit}>
                 <MDBInput
-                  wrapperClass="mb-4"
+                  wrapperClass="mb-3"
                   placeholder="Email@mail.com"
                   value={email}
                   onChange={(ev) => setEmail(ev.target.value)}
                   type="email"
+                  autoComplete="email"
                 />
 
                 <MDBInput
-                  wrapperClass="mb-4"
+                  wrapperClass="mb-3"
                   id="form2"
                   type="password"
                   placeholder="Password"
                   value={password}
                   onChange={(ev) => setPassword(ev.target.value)}
+                  autoComplete="current-password"
                 />
 
                 <div className="text-center pt-1 mb-3 pb-1">
-                  <MDBBtn
-                    className="mb-4 w-100"
-                    style={{
-                      backgroundImage:
-                        "linear-gradient(to right, #f64b65, #fa52ce)",
-                    }}
+                  <button
+                    className="mb-4 btn btn-dark w-100"
+                 
                     type="submit"
                   >
                     Login
-                  </MDBBtn>
+                  </button>
                   <a className="text-muted" href="#!">
                     Forgot password?
                   </a>
@@ -103,22 +132,13 @@ function LoginPage() {
               </div>
             </div>
           </div>
+          <div className="col-sm-12 col-md-3 col-lg-3 mb-3">
+         
+         </div>
 
-          <div className="col-sm-12 col-md-6 col-lg-6 mb-5 w3-hide-small w3-hide-medium">
-            <div className="d-flex flex-column justify-content-center gradient-custom-2 h-100 mb-4">
-              <div className="text-black p-md-5 mx-md-4">
-                <h4 className="mb-4">We are more than just a company</h4>
-                <p className="small mb-0">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                  sed do eiusmod tempor incididunt ut labore et dolore magna
-                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                  ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }
