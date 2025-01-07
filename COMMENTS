@@ -1,1 +1,2 @@
-RUN COMMAND WHOLE APP
+RUN COMMAND WHOLE APP npm run dev
+SEED COMMAND (from api/ folder) npm run seed
