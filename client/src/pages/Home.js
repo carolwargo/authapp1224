@@ -34,6 +34,7 @@ function HomePage() {
     <div>
       <div className="w3-padding-large w3-padding-48" style={{}}>
         <MDBContainer className="my-5 gradient-form">
+            <h1>HOME</h1>
           <MDBRow>
             <MDBCol col="6" className="">
               <div className="d-flex flex-column px-4 ms-5">

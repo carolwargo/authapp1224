@@ -4,6 +4,7 @@ import "./App.css";
 
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
+import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard"; // Example of a protected route
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
       <BrowserRouter basename="authapp1224">
         <Routes>
           {/* Redirect root path to /login */}
-          <Route path="/" element={<Navigate to="/login" />} />
+          <Route path="/" element={<Home />} />
 
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
