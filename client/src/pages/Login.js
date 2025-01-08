@@ -2,57 +2,50 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { MDBBtn, MDBContainer, MDBInput } from "mdb-react-ui-kit";
 import axios from "axios";
+import { Navigate } from "react-router-dom";
 
-function Signup() {
-  const [username, setUsername] = useState("");
+function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
   const [error, setError] = useState("");
+  const [redirect, setRedirect] = useState(false);  // Add redirect state
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
-    setSuccessMessage("");
 
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_API_URL}/auth/signup`, // Adjust to match your backend route
-        { username, email, password }
+        'http://localhost:5001/api/auth/login', // Full URL
+        { email, password },
+        { withCredentials: true } // To send cookies with the request, if needed
       );
+      
 
-      if (response.status === 201) {
-        setSuccessMessage("Account created successfully!");
+      if (response.status === 200) {  // Ensure the success status is 200
+        setRedirect(true);  // Redirect after successful login
       }
     } catch (err) {
       const errorMsg =
-        err.response?.data?.message || "Signup failed. Please try again.";
+        err.response?.data?.message || "Login failed. Please try again.";
       setError(errorMsg);
     }
   };
+
+  // Redirect the user after successful login
+  if (redirect) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <MDBContainer className="gradient-form" style={{ padding: "20px" }}>
       <div className="row justify-content-center">
         <div className="col-md-6">
-          <h1 className="text-center mb-4">Signup</h1>
+          <h1 className="text-center mb-4">Login</h1>
 
           {error && <p className="text-danger text-center">{error}</p>}
-          {successMessage && (
-            <p className="text-success text-center">
-              {successMessage} <Link to="/login">Login here.</Link>
-            </p>
-          )}
 
           <form onSubmit={handleSubmit}>
-            <MDBInput
-              className="mb-3"
-              type="text"
-              value={username}
-              placeholder="John Doe"
-              onChange={(e) => setUsername(e.target.value)}
-              required
-            />
             <MDBInput
               className="mb-3"
               type="email"
@@ -70,13 +63,13 @@ function Signup() {
               required
             />
             <MDBBtn type="submit" className="w-100">
-              Signup
+              Login
             </MDBBtn>
           </form>
 
           <div className="text-center mt-3">
             <p>
-              Already have an account? <Link to="/login">Login here</Link>.
+              Need an account? <Link to="/signup">Signup here</Link>.
             </p>
           </div>
         </div>
@@ -85,4 +78,4 @@ function Signup() {
   );
 }
 
-export default Signup;
+export default Login;
