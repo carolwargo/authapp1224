@@ -6,6 +6,8 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard"; // Example of a protected route
+import Header from "./components/Header";
+
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -21,6 +23,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter basename="authapp1224">
+        <Header isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} />  
         <Routes>
           {/* Redirect root path to /login */}
           <Route path="/" element={<Home />} />
