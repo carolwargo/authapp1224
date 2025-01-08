@@ -1,86 +1,80 @@
-require("dotenv").config();
-const mongoose = require("mongoose");
-const User = require("../models/User");
-const bcrypt = require("bcrypt");
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
+const User = require('../models/User'); // Adjust path based on your structure
 
-const saltRounds = 10;
+// Load environment variables
+require('dotenv').config();
 
-const users = [
+// Get MONGO_URI from the environment variables
+const MONGO_URI = process.env.MONGO_URI;
+
+// Check if MONGO_URI exists in .env file
+if (!MONGO_URI) {
+  console.error('MONGO_URI environment variable is not set');
+  process.exit(1); // Exit if MONGO_URI is not provided
+}
+
+const seedUsers = [
   {
-    firstname: "John",
-    lastname: "Doe",
-    email: "john@example.com",
-    username: "john",
-    password: "password123",
-  },
-  {
-    firstname: "Jane",
-    lastname: "Doe",
-    email: "jane@example.com",
-    username: "jane",
-    password: "password123",
-  },
-  {
-    username: "admin",
-    password: await bcrypt.hash("password", 10),
+    username: 'Carol Wargo',
+    email: 'carolwargo@gmail.com',
+    password: bcrypt.hashSync('password123', 10),
     isAdmin: true,
   },
   {
-    firstname: "Alice",
-    lastname: "Smith",
-    username: "alice123",
-    password: await bcrypt.hash("password123", 10),
+    username: 'Admin User',
+    email: 'admin',
+    password: bcrypt.hashSync('password', 10),
+    isAdmin: true,
   },
   {
-    firstname: "Bob",
-    lastname: "Johnson",
-    username: "bob456",
-    password: await bcrypt.hash("password456", 10),
+    username: 'Alice Smith',
+    email: 'alice.smith@example.com',
+    password: bcrypt.hashSync('password123', 10),
+    isAdmin: false,
   },
   {
-    firstname: "Carol",
-    lastname: "Williams",
-    username: "carol789",
-    password: await bcrypt.hash("password789", 10),
+    username: 'Bob Jones',
+   email: 'bobjones@example.com',
+    password: bcrypt.hashSync('password123', 10),
+    isAdmin: false,
+  },
+  {
+    username: 'John Apple',
+    email: "john@example.com",
+    password: bcrypt.hashSync('password123', 10),
+    isAdmin: false,
+  },
+  {
+    username: 'Jane Spot',
+    email: "jane@example.com",
+    password: bcrypt.hashSync('password123', 10),
+    isAdmin: false,
   },
 ];
 
-async function seed() {
+
+const seedDB = async () => {
   try {
-    // Load the MongoDB URI from environment variables
-    const uri = process.env.MONGODB_URI;
-
-    if (!uri) {
-      throw new Error("MONGODB_URI environment variable is not set");
-    }
-
-    await mongoose.connect(uri, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
+    // Connect to MongoDB using MONGO_URI from environment variables
+    await mongoose.connect(MONGO_URI, { 
+      useNewUrlParser: true, 
+      useUnifiedTopology: true 
     });
+    console.log('Connected to MongoDB');
 
-    console.log("Connected to MongoDB");
+    // Clear existing users from the database
+    await User.deleteMany();
 
-    // Clear existing collections
-    await User.deleteMany({});
-
-    // Hash passwords before inserting users
-    const hashedUsers = await Promise.all(
-      users.map(async (user) => ({
-        ...user,
-        password: await bcrypt.hash(user.password, saltRounds),
-      }))
-    );
-
-    // Insert users
-    await User.insertMany(hashedUsers);
-
-    console.log("Database seeded successfully");
+    // Insert new seed users
+    await User.insertMany(seedUsers);
+    console.log('Database seeded successfully');
   } catch (err) {
-    console.error("Error seeding database:", err);
+    console.error('Error seeding the database:', err);
   } finally {
+    // Close the database connection
     mongoose.connection.close();
   }
-}
+};
 
-seed();
+seedDB();

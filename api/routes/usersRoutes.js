@@ -1,26 +1,25 @@
-// api/routes/users.js
-
+// api/routes/userRoutes.js
 const express = require('express');
 const User = require('../models/User');
-const authenticateToken = require('../utils/auth');
-const adminOnly = require('../utils/admin');
+const authenticateToken = require('../utils/auth'); // Middleware to verify JWT
+const adminOnly = require('../utils/admin'); // Middleware for admin-only routes
 const router = express.Router();
 
-// Admin Route to Get All Users (with password field excluded for security)
+// Admin Route to Get All Users (Excludes password field for security)
 router.get('/admin/users', authenticateToken, adminOnly, async (req, res) => {
   try {
-    const users = await User.find({}, '-password'); // Exclude password field
+    const users = await User.find({}, '-password');
     res.json({ users });
-  } catch (err) {
-    console.error('Error fetching users:', err);
+  } catch (error) {
+    console.error('Error fetching users:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 
-// Public Route to Get All Users (username and isAdmin fields only)
+// Public Route to Get Basic User Info
 router.get('/users', async (req, res) => {
   try {
-    const users = await User.find({}, 'username isAdmin'); // Select only relevant fields
+    const users = await User.find({}, 'username isAdmin');
     res.json(users);
   } catch (error) {
     console.error('Error fetching users:', error);

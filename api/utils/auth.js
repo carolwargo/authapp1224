@@ -1,31 +1,22 @@
-// middleware/auth.js
+//api/utils/auth.js
 const jwt = require('jsonwebtoken');
-const User = require('../models/User');
 
-const authenticateToken = async (req, res, next) => {
-  const token = req.cookies.token; // Assuming the JWT is stored in a cookie named 'token'
+const requireAuth = (req, res, next) => {
+  const authHeader = req.headers.authorization;
 
-  if (!token) {
-    return res.status(401).json({ error: 'Access Denied: No Token Provided' });
+  if (!authHeader) {
+    return res.status(401).json({ message: 'No token provided' });
   }
 
-  try {
-    const verified = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = verified; // Attach the payload to the request object
+  const token = authHeader.split(' ')[1]; // Extract token from "Bearer <token>"
 
-    // Optionally, fetch the full user details from the database
-    const user = await User.findById(req.user.id);
-    if (!user) {
-      return res.status(401).json({ error: 'User Not Found' });
+  jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
+    if (err) {
+      return res.status(401).json({ message: 'Invalid token' });
     }
-
-    req.user.isAdmin = user.isAdmin; // Attach isAdmin to req.user
-
-    next(); // Proceed to the next middleware or route handler
-  } catch (err) {
-    console.error(err);
-    res.status(400).json({ error: 'Invalid Token' });
-  }
+    req.user = decodedToken; // Attach decoded token to `req.user`
+    next();
+  });
 };
 
-module.exports = authenticateToken;
+module.exports = requireAuth;
