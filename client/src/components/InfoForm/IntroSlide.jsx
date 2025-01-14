@@ -213,47 +213,15 @@ const [twitter, setTwitter] = useState("");
               <div className="w3-container w3-content w3-padding-24">
                 <h2 className="text-center">Tell Us About Yourself!</h2>
                 <p className="text-center">
-                  Providing accurate and up-to-date information is essential to
-                  enhance credibility and optimize efficiency through the
-                  recruiting process.
+                  Providing accurate and up-to-date information is essential to optimize efficiency through the collaborative process.
                 </p>
 
                 <p className="text-center mt-4">
-                  <b>OUR 4-STEP DATA COLLECTION PROCESS: </b> Will guide you
-                  through a series of digital forms to share the necessary
+                  <b>OUR DATA COLLECTION PROCESS: </b> Will guide you
+                  through a series of categories to share <span className=" text-body-emphasis fw-bold">Contact, Personal, Athletic & Academic </span> the necessary
                   details. All submitted information will be securely stored in
-                  your client profile and used to develop your tailored
-                  recruiting solutions.
-                  <b style={{ marginRight: "5px" }}>
-                    {" "}
-                    CATEGORIES ARE AS FOLLOWS:{" "}
-                  </b>{" "}
-                  <span>
-                    <Link to="/contact-slide" className=" link-dark">
-                      Contact Information
-                    </Link>{" "}
-                  </span>
-                  ,
-                  <span>
-                    {" "}
-                    <Link to="/personal-slide" className=" link-dark">
-                      Personal Information
-                    </Link>{" "}
-                  </span>
-                  ,
-                  <span>
-                    {" "}
-                    <Link to="/athletic-slide" className=" link-dark">
-                      Athletic Information
-                    </Link>{" "}
-                  </span>
-                  ,
-                  <span>
-                    {" "}
-                    <Link to="/academic-slide" className=" link-dark">
-                      Academic Information{" "}
-                    </Link>{" "}
-                  </span>
+                  your client profile and used to develop tailored
+                  recruiting solutions.              
                 </p>
               </div>
               {/**end INTRO */}
@@ -773,47 +741,15 @@ const [twitter, setTwitter] = useState("");
               <div className="w3-container w3-content w3-padding-24">
                 <h2 className="text-center">Tell Us About Yourself!</h2>
                 <p className="text-center">
-                  Providing accurate and up-to-date information is essential to
-                  enhance credibility and optimize efficiency through the
-                  recruiting process.
+                  Providing accurate and up-to-date information is essential to optimize efficiency through the collaborative process.
                 </p>
 
                 <p className="text-center mt-4">
-                  <b>OUR 4-STEP DATA COLLECTION PROCESS: </b> Will guide you
-                  through a series of digital forms to share the necessary
+                  <b>OUR DATA COLLECTION PROCESS: </b> Will guide you
+                  through a series of categories to share <span className=" text-body-emphasis fw-bold">Contact, Personal, Athletic & Academic </span> the necessary
                   details. All submitted information will be securely stored in
-                  your client profile and used to develop your tailored
-                  recruiting solutions.
-                  <b style={{ marginRight: "5px" }}>
-                    {" "}
-                    CATEGORIES ARE AS FOLLOWS:{" "}
-                  </b>{" "}
-                  <span>
-                    <Link to="/contact-slide" className=" link-dark">
-                      Contact Information
-                    </Link>{" "}
-                  </span>
-                  ,
-                  <span>
-                    {" "}
-                    <Link to="/personal-slide" className=" link-dark">
-                      Personal Information
-                    </Link>{" "}
-                  </span>
-                  ,
-                  <span>
-                    {" "}
-                    <Link to="/athletic-slide" className=" link-dark">
-                      Athletic Information
-                    </Link>{" "}
-                  </span>
-                  ,
-                  <span>
-                    {" "}
-                    <Link to="/academic-slide" className=" link-dark">
-                      Academic Information{" "}
-                    </Link>{" "}
-                  </span>
+                  your client profile and used to develop tailored
+                  recruiting solutions.              
                 </p>
               </div>
               {/**end INTRO */}

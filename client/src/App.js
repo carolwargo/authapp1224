@@ -19,6 +19,7 @@ import PersonalSlide from "./components/InfoForm/PersonalSlide";
 import AthleticSlide from "./components/InfoForm/AthleticSlide";
 import AcademicSlide from "./components/InfoForm/AcademicSlide";
 import FinishedSlide from "./components/InfoForm/FinishedSlide";
+import Dashboard from "./pages/Dashboard.js";
 
 function App() {
   return (
@@ -30,7 +31,9 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/infoform" element={<InfoForm/>}></Route>
+            <Route path="/infoform" element={<InfoForm/>}>
+            <Route path='dashboard' element={<Dashboard/>} />
+            </Route>
             
             
             {/* Nested Routes under InfoLayout */}
