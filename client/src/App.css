@@ -2,6 +2,206 @@
    font-family: 'Montserrat';  
 }
 
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+
+* {
+    font-family:sans-serif;
+}
+
+
+/*Hover Zoom Images*/
+/* Define zoom effect with smooth transition */
+.hover-zoom {
+  transition: transform 0.4s ease !important; /* Adjust transition duration */
+}
+
+.hover-zoom:hover {
+  transform: scale(.95) !important; /* Scale up the image on hover */
+}
+
+.icon-hover-zoom {
+  display: inline-block;
+  transition: transform 0.4s ease;
+  color: white !important; /* Keep color white */
+}
+
+.icon-hover-zoom:hover {
+  transform: scale(0.95);
+}
+
+/*start ANIMATIONS*/
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideLeft {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+.glow {
+  color: #fff;
+  text-align: center;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+  }
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+  }
+}
+
+.blue-glow {
+  color: #67c3f8;
+  text-align: center;
+  text-shadow:  2px 2px 6px #67c3f8;
+  
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #67c3f8, 0 0 40px #67c3f8, 0 0 50px #67c3f8, 0 0 60px #67c3f8, 0 0 70px #67c3f8;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #03a0fa, 0 0 40px #03a0fa, 0 0 50px #03a0fa, 0 0 60px #03a0fa, 0 0 70px #03a0fa, 0 0 80px #03a0fa;
+  }
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #03a0fa, 0 0 20px #03a0fa, 0 0 30px #047bc0, 0 0 40px #047bc0, 0 0 50px #047bc0, 0 0 60px #047bc0, 0 0 70px #047bc0;
+  }
+  to {
+    text-shadow: 0 0 20px #03a0fa, 0 0 30px #03a0fa, 0 0 40px #03a0fa, 0 0 50px #03a0fa, 0 0 60px #03a0fa, 0 0 70px #03a0fa, 0 0 80px #03a0fa;
+  }
+}
+
+
+
+.grayscale-image {
+  filter: grayscale(100%);
+  border-radius: inherit;
+  display: block;
+}
+
+
+.red-text-glow {
+  text-shadow: 0 0 10px red, 0 0 20px red, 0 0 30px red, 0 0 40px red;
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-in-out;
+}
+
+.animate-slide-left {
+  animation: slideLeft 1s ease-in-out;
+}
+
+/*end ANIMATIONS*/
+
+/*start Header glow shadows*/
+.pink-button {
+    boxShadow: 0px 0px 2px 1px #fa52ce;
+    cursor: pointer;
+    color: white;
+    backgroundImage: linear-gradient(to right, #f64b65 , #e41277);
+    transition: 'all 0.4s ease-in-out';
+    color: #d32c9a, #d32c9a;
+}
+
+.pink-icon {
+    color: #d32c9a, #d32c9a;
+}
+
+.pink-text {
+    color:  #d32c9a;
+}
+
+
+  /*Color to add: #f64b65, , #d8155b */
+  .custom-btn-pink {
+    text-shadow: 0px 0px 2px black;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    color: white;
+    background-image: linear-gradient(to right, #f80ca8, #f60a74,#f13159, #ff0035);
+    transition: all 0.4s ease-in-out;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  
+  .custom-btn-pink:hover {
+    background-image: linear-gradient(to right, #d8155b, #fe03d4);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5); /* Slightly deeper shadow */
+    opacity: 0.9; /* Slight transparency for depth */
+  }
+  
+  .custom-btn-pink:active {
+    background-image: linear-gradient(to right, #fe03d4, #f64b65);
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.5); /* Reduced shadow for pressed effect */
+    opacity: 1; /* Full opacity when pressed */
+  }
+  
+  
+
+  .custom-btn-blue {
+    text-shadow: .5px 1px 2px black;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.7);
+
+    cursor: pointer;
+    color: white !important;
+    background-image: linear-gradient(to right, #67c3f8 , #066eaa);
+    transition: all 0.4s ease-in-out;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  
+  .custom-btn-blue:hover {
+    background-image: linear-gradient(to right,  #b54bf6,  #b00253);
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.5); /* Slightly deeper shadow */
+    opacity: 0.9; 
+    color:'black';
+    /* Slight transparency for depth */
+  }
+  
+  .custom-btn-blue:active {
+    background-image: linear-gradient(to right, #b00293, #b54bf6);
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.5); /* Reduced shadow for pressed effect */
+    opacity: 1; /* Full opacity when pressed */
+  }
+
+
+  /* Start Global Button Variables */
+  .header-custom-btn {
+    margin-top: 1rem;
+    font-size: 1.25rem;
+    background-image: linear-gradient(to right, #f64b65, #fa52ce);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .custom-btn:hover {
+    opacity: 0.8;
+  }
+
 
 .form-text-header-black {
   text-shadow: 2px 2px 4px rgba(4, 41, 226, 0.3);
@@ -23,3 +223,9 @@
   font-family: sans-serif;
 }
 
+custom-input {
+  background-color: #1f1f20 !important; /* Custom background color */
+  color: white !important; /* Text color */
+  border: 1px solid #555 !important; /* Border color */
+  font-size: 14px; /* Font size */
+} 

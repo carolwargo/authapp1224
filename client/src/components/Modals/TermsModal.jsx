@@ -30,8 +30,8 @@ const TermsModal = () => {
         `}
     </style>
       {/* Trigger Link */}
-      <Link to="#"className=" link-info opacity-50 fw-bolder" onClick={handleShow}>
-        terms and conditions
+      <Link to="#"className=" link-primary opacity-75 fw-bolder" onClick={handleShow}>
+        terms and conditions.
       </Link>
 
       {/* Modal */}

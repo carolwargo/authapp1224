@@ -1,16 +1,11 @@
 import React from "react";
-
+import Login from "../components/Login";
 
 function HomePage() {
 
   return (
     <div>
-      <div className="w3-padding-large w3-padding-48" style={{}}>
-
-<h1>HOME</h1>
-
-      </div>
-   
+     <Login/>
     </div>
   );
 }

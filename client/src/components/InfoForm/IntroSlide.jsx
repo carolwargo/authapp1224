@@ -725,12 +725,529 @@ const [twitter, setTwitter] = useState("");
       </MDBContainer>
 
 
+      <div className="container-fluid w3-hide-large">
+        {/**start WHOLE ROW */}
+            <div
+              className=" rounded shadow"
+              style={{
+                backgroundColor: "rgb(243, 243, 243)",
+              }}
+            >
+              {/**start INTRO */}
+              <div className="w3-content w3-container w3-padding-top-24">
+                <h2 className="text-center">Tell Us About Yourself!</h2>
+                <p className="text-center">
+                  Providing accurate and up-to-date information is essential to optimize efficiency through the collaborative process.
+                </p>
 
+                <p className="text-center mt-4">
+                  <b>OUR DATA COLLECTION PROCESS: </b> Fill out the intake form and submit to
+                 share the details needed to get started. All submitted information will be securely stored in
+                  your client profile and used to develop tailored
+                  recruiting solutions.              
+                </p>
+              </div>
+              {/**end INTRO */}
+              <hr />
+              <div className="information-form-container">
+                {error && <p className="text-danger">{error}</p>}
+                {successMessage && (
+                  <p className="text-success ">{successMessage}</p>
+                )}
+
+                <form onSubmit={handleSubmit}>
+                          {/**start CONTACT*/}
+                  <div className="w3-container w3-padding-24">
+                    <h5
+                      className="mb-3 text-black"
+                      style={{
+                        textShadow: "4px 4px 10px rgba(0, 0, 0, 0.5)",
+                        marginLeft: "6px",
+                      }}
+                    >
+                      <b className=" opacity-75">CONTACT INFORMATION</b>
+                    </h5>
+                    <MDBRow className="">
+                      <MDBCol className="col-sm-12 col-md-6 col-lg-6">
+                      <p className="mt-2 mb-0 fw-bold text-secondary small opacity-75" style={{marginLeft:'6px'}}>First Name</p>
+                        <MDBInput
+                          className="mb-2"
+                          type="text"
+                          value={firstname}
+                          placeholder="John"
+                          onChange={(e) => setFirstname(e.target.value)}
+                          required
+                        />
+                      </MDBCol>
+                      <MDBCol className="col-sm-12 col-md-6 col-lg-6">
+                      <p className="mt-2 mb-0 fw-bold text-secondary small opacity-75" style={{marginLeft:'6px'}}>Last Name</p>
+                        <MDBInput
+                          className="mb-2"
+                          type="text"
+                          value={lastname}
+                          placeholder="Doe"
+                          onChange={(e) => setLastname(e.target.value)}
+                          required
+                        />
+                      </MDBCol>
+                    </MDBRow>
+
+                    <MDBRow className=" contact-row">
+                      <MDBCol className="col-sm-12 col-md-6 col-lg-6">
+                      <p className="mt-2 mb-0 fw-bold text-secondary small opacity-75" style={{marginLeft:'6px'}}>Email Address</p>
+                        <MDBInput
+                          className="mb-2"
+                          type="email"
+                          value={email}
+                          placeholder="mail@email.com"
+                          onChange={(e) => setEmail(e.target.value)}
+                          required
+                        />
+                      </MDBCol>
+                      <MDBCol className="col-sm-12 col-md-6 col-lg-6">
+                      <p className="mt-2 mb-0 fw-bold text-secondary small opacity-75" style={{marginLeft:'6px'}}>Phone Number</p>
+                        <MDBInput
+                          className="mb-2"
+                          type="phone"
+                          value={phone}
+                          placeholder="(123)456-7890"
+                          onChange={(e) => setPhone(e.target.value)}
+                          required
+                        />
+                      </MDBCol>
+                    </MDBRow>
+
+                    <MDBRow className="address-row">
+                      <MDBCol className="col-sm-12 col-md-12 col-lg-12">
+                      <p className="mt-2 mb-0 fw-bold text-secondary small opacity-75" style={{marginLeft:'6px'}}>Street Address</p>
+                      
+                    <MDBInput
+                      className="mb-2"
+                      type="text"
+                      value={streetaddress}
+                      placeholder="12345 Main St"
+                      onChange={(e) => setStreetAddress(e.target.value)}
+                      required
+                    />
+                    </MDBCol>
+                    </MDBRow>
+                    
+                    <MDBRow className="address2-row">
+                      <MDBCol className="col-sm-12 col-md-5 col-lg-5">
+                      <p className="mt-2 mb-0 fw-bold text-secondary small opacity-75" style={{marginLeft:'6px'}}>City</p>
+                        <MDBInput
+                          className="mb-2"
+                          type="text"
+                          value={city}
+                          placeholder="Annapolis"
+                          onChange={(e) => setCity(e.target.value)}
+                          required
+                        />
+                      </MDBCol>
+                      <MDBCol className="col-sm-12 col-md-3 col-lg-3">
+                      <p className="mt-2 mb-0 fw-bold text-secondary small opacity-75" style={{marginLeft:'6px'}}>State</p>
+                        <select
+                          className="custom-select form-control mb-2"
+                          value={state}
+                          onChange={(e) => setState(e.target.value)}
+                          required
+                        >
+                          <option value="" disabled>
+                            Select
+                          </option>
+                          {states.map((stateAbbr) => (
+                            <option key={stateAbbr} value={stateAbbr}>
+                              {stateAbbr}
+                            </option>
+                          ))}
+                        </select>
+                      </MDBCol>
+                      <MDBCol className="col-sm-12 col-md-4 col-lg-4">
+                      <p className="mt-2 mb-0 fw-bold text-secondary small opacity-75" style={{marginLeft:'6px'}}>Zip Code</p>
+                        <MDBInput
+                          className="mb-2"
+                          type="text"
+                          value={zipcode}
+                          placeholder="12345"
+                          onChange={(e) => setZipcode(e.target.value)}
+                          required
+                        />
+                      </MDBCol>
+                    </MDBRow>
+                  
+                 <MDBRow className="social-media-row">
+                      <MDBCol className="col-sm-12 col-md-4 col-lg-4">
+                      <p className="mt-2 mb-0 fw-bold text-secondary small opacity-75" style={{marginLeft:'6px'}}>X (Twitter)</p>
+                        <MDBInput
+                          className="mb-2"
+                          type="text"
+                          value={twitter}
+                         placeholder="@Handle"
+                          onChange={(e) => setTwitter(e.target.value)}
+                          required
+                        />
+                      </MDBCol>
+                      <MDBCol className="col-sm-12 col-md-4 col-lg-4">
+                      <p className="mt-2 mb-0 fw-bold text-secondary small opacity-75" style={{marginLeft:'6px'}}>Instagram</p>
+                        <MDBInput
+                          className="mb-2"
+                          type="text"
+                          value={instagram}
+                            placeholder="@Handle"
+                          onChange={(e) => setInstagram(e.target.value)}
+                          required
+                        />
+                      </MDBCol>
+                      <MDBCol className="col-sm-12 col-md-4 col-lg-4">
+                      <p className="mt-2 mb-0 fw-bold text-secondary small opacity-75" style={{marginLeft:'6px'}}>Facebook</p>
+                        <MDBInput
+                          className="mb-2"
+                          type="text"
+                          value={facebook}
+                              placeholder="@Handle"
+                          onChange={(e) => setFacebook(e.target.value)}
+                          required
+                        />
+                      </MDBCol>
+                    </MDBRow>
+
+                  </div>
+                  {/**end CONTACT */}
+
+
+                      {/**start PERSONAL */}
+                      <div className="w3-container w3-content w3-padding-24">
+                    <h5
+                      className="mb-3 text-black"
+                      style={{
+                        textShadow: "4px 4px 10px rgba(0, 0, 0, 0.5)",
+                        marginLeft: "6px",
+                      }}
+                    >
+                      <b className=" opacity-75">PERSONAL INFORMATION</b>
+                    </h5>
+                    <MDBRow className="highschool-row">
+                      <MDBCol className="col-sm-12 col-md-8 col-lg-8">
+                      <p className="mt-2 mb-0 fw-bold text-secondary small opacity-75" style={{marginLeft:'6px'}}>Current High School</p>
+                        <MDBInput
+                          className="mb-2"
+                          type="text"
+                          value={highschool}
+                          placeholder="Youtown High School"
+                          onChange={(e) => setHighschool(e.target.value)}
+                          required
+                        />
+                      </MDBCol>
+                      <MDBCol className="col-sm-12 col-md-4 col-lg-4">
+                      <p className="mt-2 mb-0 fw-bold text-secondary small opacity-75" style={{marginLeft:'6px'}}>Located at</p>
+                        <MDBInput
+                          className="mb-2"
+                          type="text"
+                          value={hslocation}
+                          placeholder="'HS City, State'"
+                          onChange={(e) => setHslocation(e.target.value)}
+                          required
+                        />
+                      </MDBCol>
+                    </MDBRow>
+
+                    <MDBRow className="highschool-row">
+                      <MDBCol className="col-sm-12 col-md-6 col-lg-6">
+                      <p className="mt-2 mb-0 fw-bold text-secondary small opacity-75" style={{marginLeft:'6px'}}>Grad Year</p>
+                        <MDBInput
+                          className="mb-2"
+                          type="text"
+                          value={gradyear}
+                          placeholder="'2029'"
+                          onChange={(e) => setGradYear(e.target.value)}
+                          required
+                        />
+                      </MDBCol>
+                      <MDBCol className="col-sm-12 col-md-6 col-lg-6">
+                      <p className="mt-2 mb-0 fw-bold text-secondary small opacity-75" style={{marginLeft:'6px'}}>Date of Birth</p>
+                        <MDBInput
+                          className="mb-2"
+                          type="text"
+                          value={dob}
+                          placeholder="'01/01/2001'"
+                          onChange={(e) => setDob(e.target.value)}
+                          required
+                        />
+                      </MDBCol>
+                    </MDBRow>
+
+             
+                  </div>
+                  {/**end PERSONAL */}
+
+                  {/**start ATHLETIC */}
+                  <div className="w3-container w3-content w3-padding-24">
+                    <h5
+                      className="mb-3 text-black"
+                      style={{
+                        textShadow: "4px 4px 10px rgba(0, 0, 0, 0.5)",
+                        marginLeft: "6px",
+                      }}
+                    >
+                      <b className=" opacity-75">ATHLETIC INFORMATION</b>
+                    </h5>
+                    <MDBRow className="sport-row">
+                      <MDBCol className="col-sm-12 col-md-6 col-lg-6">
+                      <p className="mt-2 mb-0 fw-bold text-secondary small opacity-75" style={{marginLeft:'6px'}}>Sport of Interest</p>
+                        <MDBInput
+                          className="mb-2"
+                          type="text"
+                          value={sport}
+                          placeholder="'Wrestling'"
+                          onChange={(e) => setSport(e.target.value)}
+                          required
+                        />
+                      </MDBCol>
+
+                      <MDBCol className="col-sm-12 col-md-6 col-lg-6">
+                      <p className="mt-2 mb-0 fw-bold text-secondary small opacity-75" style={{marginLeft:'6px'}}>Team (JV/Varsity)</p>
+                        <MDBInput
+                          className="mb-2"
+                          type="text"
+                          value={hslevel}
+                          placeholder="'Varsity'"
+                          onChange={(e) => setHsLevel(e.target.value)}
+                          required
+                        />
+                      </MDBCol>
+                    </MDBRow>
+
+                    <MDBRow className="metrics-row">  
+                      <MDBCol className="col-sm-12 col-md-4 col-lg-4">
+                      <p className="mt-2 mb-0 fw-bold text-secondary small opacity-75" style={{marginLeft:'6px'}}>Height</p>
+                        <MDBInput
+                          className="mb-2"
+                          type="text"
+                          value={height}
+                          placeholder="'6ft. 2in.'"
+                          onChange={(e) => setHeight(e.target.value)}
+                          required
+                        />
+                      </MDBCol>
+                      <MDBCol className="col-sm-12 col-md-4 col-lg-4">
+                      <p className="mt-2 mb-0 fw-bold text-secondary small opacity-75" style={{marginLeft:'6px'}}>Weight</p>
+                        <MDBInput
+                          className="mb-2"
+                          type="text"
+                          value={weight}
+                          placeholder="'210lbs'"
+                          onChange={(e) => setWeight(e.target.value)}
+                          required
+                        />
+                      </MDBCol>
+                      <MDBCol className="col-sm-12 col-md-4 col-lg-4">
+                      <p className="mt-2 mb-0 fw-bold text-secondary small opacity-75" style={{marginLeft:'6px'}}>Handedness</p>
+                        <select
+                          className="custom-select form-control"
+                          value={hand}
+                          onChange={(e) => setHand(e.target.value)}
+                          required
+                        >
+                          <option value="" disabled>
+                           Select
+                          </option>
+                          {hands.map((handAbbr) => (
+                            <option key={handAbbr} value={handAbbr}>
+                              {handAbbr}
+                            </option>
+                          ))}
+                        </select>
+                      </MDBCol>
+                    </MDBRow>
+
+                    <MDBRow className=" position-row">
+                    <p className="mt-2 mb-0 fw-bold text-secondary small opacity-75" style={{marginLeft:'6px'}}>Positions</p>
+                      <MDBCol className="col-sm-12 col-md-6 col-lg-6">
+                        <MDBInput
+                          className="mb-2"
+                          type="text"
+                          value={primaryposition}
+                          placeholder="Primary Position"
+                          onChange={(e) => setPrimaryPosition(e.target.value)}
+                          required
+                        />
+                      </MDBCol>
+                      <MDBCol className="col-sm-12 col-md-6 col-lg-6">
+                        <MDBInput
+                          className="mb-2"
+                          type="text"
+                          value={secondaryposition}
+                          placeholder="Secondary Position"
+                          onChange={(e) => setSecondaryPosition(e.target.value)}
+                          required
+                        />
+                      </MDBCol>
+                    </MDBRow>
+
+                    <MDBRow className="athletic-textarea-row">
+                      <MDBCol className="col-sm-12 col-md-12 col-lg-12">
+                      <p className="mt-2 mb-0 fw-bold text-secondary small opacity-75" style={{marginLeft:'6px'}}>Additional Information</p>
+                        <textarea
+                          className="form-control mb-2"
+                          rows="5"
+                          value={athleticextra}
+                          placeholder="'honors, awards, etc...'"  
+                          onChange={(e) => setAthleticExtra(e.target.value)}
+                        ></textarea>
+                      </MDBCol>
+                    </MDBRow>
+                  </div>
+                  {/**end ATHLETIC */}
+
+                  {/**start ACADEMIC */}
+                  <div className="w3-container w3-content w3-padding-top-24">
+                    <h5
+                      className="mb-3 text-black"
+                      style={{
+                        textShadow: "4px 4px 10px rgba(0, 0, 0, 0.5)",
+                        marginLeft: "6px",
+                      }}
+                    >
+                      <b className=" opacity-75">ACADEMIC INFORMATION</b>
+                    </h5>
+
+
+                    <MDBRow className="highschool-row">
+                      <MDBCol className="col-sm-12 col-md-12 col-lg-12">
+                      <p className="mt-2 mb-0 fw-bold text-secondary small opacity-75" style={{marginLeft:'6px'}}>Current High School</p>
+                        <MDBInput
+                          className="mb-2"
+                          type="text"
+                          value={highschool}
+                          placeholder="'Youtown High School'"
+                          onChange={(e) => setHighschool(e.target.value)}
+                          required
+                        />
+                      </MDBCol>
+                    </MDBRow>
+
+                    <MDBRow className="highschool-row">
+                      <MDBCol className="col-sm-12 col-md-6 col-lg-6">
+                      <p className="mt-2 mb-0 fw-bold text-secondary small opacity-75" style={{marginLeft:'6px'}}>Grad Year</p>
+                        <MDBInput
+                          className="mb-2"
+                          type="text"
+                          value={gradyear}
+                          placeholder="'2029'"
+                          onChange={(e) => setGradYear(e.target.value)}
+                          required
+                        />
+                      </MDBCol>
+                      <MDBCol className="col-sm-12 col-md-6 col-lg-6">
+                      <p className="mt-2 mb-0 fw-bold text-secondary small opacity-75" style={{marginLeft:'6px'}}>Date of Birth</p>
+                        <MDBInput
+                          className="mb-2"
+                          type="text"
+                          value={dob}
+                          placeholder="'01/01/2001'"
+                          onChange={(e) => setDob(e.target.value)}
+                          required
+                        />
+                      </MDBCol>
+                    </MDBRow>
+
+                    <MDBRow className="acadmics-row">
+                      <MDBCol className="col-sm-12 col-md-6 col-lg-6">
+                            <p className="mt-2 mb-0 fw-bold text-secondary small opacity-75" style={{marginLeft:'6px'}}>ACT/SAT Score</p>
+                        <MDBInput
+                          className="mb-2"
+                          type="text"
+                          value={testscores}
+                          placeholder="'30/1400'"
+                          onChange={(e) => setTestScores(e.target.value)}
+                          required
+                        />
+                      </MDBCol>
+                      <MDBCol className="col-sm-12 col-md-6 col-lg-6">
+                      <p className="mt-2 mb-0 fw-bold text-secondary small opacity-75" style={{marginLeft:'6px'}}>GPA</p>
+                        <MDBInput
+                          className="mb-2"
+                          type="text"
+                          value={gpa}
+                          placeholder="'3.9'"
+                          onChange={(e) => setGpa(e.target.value)}
+                          required
+                        />
+                      </MDBCol>
+                    </MDBRow>
+
+                    <MDBRow className="academic-textarea-row">
+                      <MDBCol className="col-sm-12 col-md-12 col-lg-12">
+                      <p className="mt-2 mb-0 fw-bold text-secondary small opacity-75" style={{marginLeft:'6px'}}>Additional Information</p>
+                        <textarea
+                          className="form-control mb-2"
+                          rows="5"
+                          value={academicextra}
+                          placeholder="'honors, awards, etc...'"  
+                          onChange={(e) => setAcademicExtra(e.target.value)}
+                        ></textarea>
+                      </MDBCol>
+                    </MDBRow>
+                  </div>
+                  {/**end ACADEMIC */}
+
+                  {/**start CHECKBOX AND SUBMIT */}
+                  <div className="w3-container w3-content w3-padding-24">
+                  <MDBRow className="d-flex align-items-center">
+                    <MDBCol className="col-sm-12 col-md-12 col-lg-12 justify-content-end">
+                      <div className="mt-2" style={{ marginLeft: "5px" }}>
+                        <div
+                          style={{
+                            display: "flex",
+                            alignItems: "start", // Align checkbox and text vertically
+                            gap: "10px", // Add spacing between checkbox and text
+                          }}
+                        >
+                          <MDBCheckbox
+                            className="border border-2"
+                            labelStyle={{ fontSize: "0.8rem", color: "gray" }}
+                            id="terms"
+                            required
+                            name="terms"
+                            checked={isChecked} // Use the state to determine if the checkbox is checked
+                            onChange={(e) => setIsChecked(e.target.checked)} // Update state when checkbox is clicked
+                          />
+                          <div>
+                            <p
+                              className=" text-muted"
+                              style={{ fontSize: "13px" }}
+                            >
+                              By clicking submit, I consent to the{" "}
+                              <TermsModal /> and certify accuracy of the
+                              information provided.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </MDBCol>
+                  </MDBRow>
+                  <div className="mb-2">
+                    <Link to="/infolayout/personal">
+                      <button
+                        type="submit"
+                        className="w-100 btn-sm fw-bold btn btn-dark mt-2"
+                      >
+                        <span style={{ fontSize: "12px" }}>Submit </span>
+                      </button>
+                    </Link>
+                  </div>
+                  </div>
+                  {/**END CHECKBOX AND SUBMIT */}
+                </form>
+                {/**END form */}
+              </div>
+            </div>
+        {/*end WHOLE ROW */}
+      </div>
 
       <MDBContainer className="w3-hide-large">
         {/**start WHOLE ROW */}
-        <div className="row justify-content-center">
-          <div className="col-sm-12 col-md-8 col-lg-8">
+  
             <MDBContainer
               className=" rounded shadow"
               style={{
@@ -738,7 +1255,7 @@ const [twitter, setTwitter] = useState("");
               }}
             >
               {/**start INTRO */}
-              <div className="w3-container w3-content w3-padding-24">
+              <div className="w3-container w3-padding-24">
                 <h2 className="text-center">Tell Us About Yourself!</h2>
                 <p className="text-center">
                   Providing accurate and up-to-date information is essential to optimize efficiency through the collaborative process.
@@ -1247,8 +1764,7 @@ const [twitter, setTwitter] = useState("");
                 {/**END form */}
               </div>
             </MDBContainer>
-          </div>
-        </div>
+       
         {/*end WHOLE ROW */}
       </MDBContainer>
     </div>

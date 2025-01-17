@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { MDBBtn, MDBContainer, MDBInput } from "mdb-react-ui-kit";
+import { MDBContainer, MDBInput } from "mdb-react-ui-kit";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
 
@@ -38,7 +38,7 @@ function Login() {
   }
 
   return (
-    <MDBContainer className="gradient-form" style={{ padding: "20px" }}>
+    <MDBContainer className="" style={{ padding: "20px", backgroundColor: "black" }}>
       <div className="row justify-content-center">
         <div className="col-md-6">
           <h1 className="text-center mb-4">Login</h1>
@@ -62,9 +62,13 @@ function Login() {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            <MDBBtn type="submit" className="w-100">
-              Login
-            </MDBBtn>
+
+<button
+                        type="submit"
+                        className="w-100 btn-sm fw-bold btn btn-dark mt-3"
+                      >
+                        <span style={{ fontSize: "12px" }}>Submit </span>
+                      </button>
           </form>
 
           <div className="text-center mt-3">

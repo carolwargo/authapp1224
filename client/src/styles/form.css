@@ -1,0 +1,13 @@
+.custom-form-control.form-control {
+    background-color: #1f1f20 !important; /* Custom background color */
+    color: white !important; /* Text color */
+    border: 1px solid #555 !important; /* Border color */
+    font-size: 14px; /* Font size */
+  }
+  
+  
+  .custom-form-control::placeholder {
+    color: #ccc; /* Placeholder text color */
+    opacity: 0.8;
+  }
+  
