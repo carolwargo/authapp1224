@@ -50,6 +50,7 @@ function Login() {
               className="mb-3"
               type="email"
               value={email}
+              label="Email"
               placeholder="johndoe@email.com"
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -58,6 +59,7 @@ function Login() {
               className="mb-3"
               type="password"
               value={password}
+              label="Password"
               placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
               required

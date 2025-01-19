@@ -1,26 +1,324 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useInView } from "framer-motion";
 import { Navigate } from "react-router-dom";
-import { Button, Row, Col} from "react-bootstrap";
-import Form from 'react-bootstrap/Form';
-import {
-  MDBBtn,
-  MDBContainer,
-  MDBInput,
-  MDBCheckbox,
-}
-from 'mdb-react-ui-kit';
-import TermsModal from "./Modals/TermsModal";
-import AnimatedHeading from "../components/AnimatedHeading";
-//import LogoWhite from "../assets/images/Logo/LogoWhite.png";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button } from "react-bootstrap";
+import TermsModal from "../components/Modals/TermsModal";
+import PrivacyModal from "../components/Modals/PrivacyModal";
+import Form from "react-bootstrap/Form";
+import {MDBInput} from "mdb-react-ui-kit";
+import '../App.css'; // Import your CSS file
 
 
+  
 
 function Login() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false});
+
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [redirect, setRedirect] = useState(false); // Add redirect state
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+
+    try {
+      const response = await axios.post(
+        "http://localhost:5001/api/auth/login", // Full URL
+        { email, password },
+        { withCredentials: true } // To send cookies with the request, if needed
+      );
+
+      if (response.status === 200) {
+        // Ensure the success status is 200
+        setRedirect(true); // Redirect after successful login
+      }
+    } catch (err) {
+      const errorMsg =
+        err.response?.data?.message || "Login failed. Please try again.";
+      setError(errorMsg);
+    }
+  };
+
+  // Redirect the user after successful login
+  if (redirect) {
+    return <Navigate to="/dashboard" />;
+  }
+
+  return (
+    <div className="bg-secondary-subtle">
+      <style>
+        {`
+        .card {
+          background-color: black;
+
+        }
+
+    .custom-wrapper-class {
+  background-color: black;
+  padding: 5px;
+  border-radius: 5px;
+  color: white; 
+  font-size: 13px !important;  
+}
+  .custom-wrapper-class input { 
+    background-color: black;
+    color: white;
+      font-size: 13px !important;  
+  } 
+
+ input::placeholder {
+  color: white !important;
+  font-size: 12px !important;
+}
+
+
+  `}
+      </style>
+      <div className="p-5 w3-container w3-content">
+        <div className="row d-flex justify-content-center align-items-center">
+          <div className="col-sm-12 col-md-7 col-lg-7 text-md-start d-flex flex-column justify-content-center align-items-center">
+            <div className="px-5">
+              {/** 
+            <h1 ref={ref}
+      style={{
+        fontSize: "6rem", 
+        letterSpacing:'-3px',
+        color:'black',
+        textShadow:'2px 2px 4px black',
+        transform: isInView ? "none" : "translateX(-50px)",
+        opacity: isInView ? 1 : 0,
+        transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
+      }}
+
+      className='fw-light mb-0'>
+     <b style={{ letterSpacing:'-6px'}}
+     >con</b><span style={{color:'#e9008c', marginLeft:'-12px'}}>scribe</span>.
+   </h1>
+*/}
+            <h1 className="display-1 fw-bold"
+            style={{
+              fontFamily: 'Roboto', 
+              textShadow:'2px 2px 4px black'
+              }}>
+            
+            <span className=" m-0 p-0">   </span>
+          Chart Your Journey <br />
+            <span style={{color:' #e9008c', textShadow:'2px 2px 4px black'}}>Build Your Brand</span>
+         
+          </h1>
+      
+          <p  style={{ color: "hsl(217, 10%, 50.8%)" }}>
+   <b style={{fontSize:'18px'}}>conscribedigital.com-</b> Digital Recruiting Services for Student-Athletes provides Unfiltered Guidance and a Seasoned Perspective Through a Unique Approach.
+          </p>
+            </div>
+          </div>
+
+          <div className="col-sm-12 col-md-5 col-lg-5 text-md-start d-flex flex-column justify-content-center align-items-center">
+            <div className="card">
+              <div className="card-body">
+              <div className="px-5">
+              <h1 ref={ref}
+      style={{
+        fontSize: "4rem", letterSpacing:'-1px',
+        textShadow:
+        '1px 1px 2px black, -1px -1px 2px black, 1px -1px 2px black, -1px  1px 2px black',
+        transform: isInView ? "none" : "translateX(-50px)",
+        opacity: isInView ? 1 : 0,
+        transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
+      }}
+
+      className='text-center fw-light text-white mb-0'>
+     <b>con</b><span style={{color:'#e9008c', marginLeft:'-9px'}}>scribe.</span>
+   </h1>         
+   <h5 className="fw-normal text-white pt-4 mb-4" style={{letterSpacing: '1px', fontSize:'13px'}}><i className="fas fa-lock" style={{fontSize:'13px'}}></i> Sign into your account.</h5>
+                
+   {error && <p className="text-danger text-center">{error}</p>}
+
+<Form onSubmit={handleSubmit}>
+       
+              <Form.Label
+              className="pb-0 mb-0 mt-0 pt-0" 
+              style={{ fontSize: "14px", color: "white" }}> 
+                      Email address
+                    </Form.Label>
+                <MDBInput
+                  wrapperClass="custom-wrapper-class text-white px-0"
+                  type="email"
+                  value={email}
+                  placeholder="email@mail.com"
+                  id="email"
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+
+
+     <Form.Label
+              className="pb-0 mb-0" 
+              style={{ fontSize: "14px", color: "white" }}> 
+                    Password
+                    </Form.Label>
+                <MDBInput
+                  wrapperClass="custom-wrapper-class mb-3 px-0"
+                  type="password"
+                  value={password}
+                  placeholder="Password"
+                  id="password"
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+                  <div className="d-flex justify-content-center mx-4 mb-2">
+            <Link to="#!" className="small link-secondary">Forgot password?</Link>
+             
+          </div>
+          
+        <Button
+                    variant="outline-light"
+                    type="submit"
+                    className="mt-3 w-100"
+                    style={{ fontSize: "13px" }}
+                  >
+                    Login
+                  </Button>
+
+                <div className="text-center text-white mt-3">
+                  <p className=" small">
+                  Don't have an account? <Link to="/signup" className=" link-secondary">Sign Up</Link>.
+                  </p>
+                  <span className="me-2"> <TermsModal /> </span> <PrivacyModal />
+                 
+              </div>
+              </Form>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+{/** 
+      <div className="w3-container w3-content ">
+        <div
+          className="row d-flex justify-content-center align-items-center w3-margin-bottom"
+          style={{ padding: "40px" }}
+        >
+          <div className="col-sm-12 col-md-6 col-lg-6 text-md-start d-flex flex-column justify-content-center">
+            <div className="container text-black">
+              <AnimatedHeading />
+              <h1 className="my-3 display-5 fw-bold ls-tight px-4">
+                CUSTOM RECRUITING TOOLS
+                <br />
+                <span className="text-primary">
+                  <b>TO BUILD YOUR BRAND</b>
+                </span>
+              </h1>
+
+              <p className="px-4" style={{ color: "hsl(217, 10%, 50.8%)" }}>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Eveniet, itaque accusantium odio, soluta, corrupti aliquam
+                libero veritatis? Dicta facilis sint aliquid ipsum atque?
+              </p>
+            </div>
+          </div>
+          <div className="col-sm-12 col-md-6 col-lg-6 text-md-start d-flex flex-column justify-content-center">
+            <div className="card text-black w3-light-grey"
+            style={{borderRadius: '10px'}}>
+              <div className="card-body px-5 py-4">
+                <h3 className="fw-bold mb-2 text-center text-uppercase">
+                  Login
+                </h3>
+                <p
+                  className="text-black-50 text-center mb-3"
+                  style={{ fontSize: "13px" }}
+                >
+                  Please enter your login and password!
+                </p>
+
+                {error && <p className="text-danger text-center">{error}</p>}
+
+                <Form onSubmit={handleSubmit}>
+                  <Form.Group className="mb-3" controlId="ControlEmail">
+                    <Form.Label style={{ fontSize: "13px" }}>
+                      Email address
+                    </Form.Label>
+                    <Form.Control
+                      type="email"
+                      style={{ fontSize: "13px" }}
+                      value={email}
+                      placeholder="johndoe@email.com"
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                    />
+                  </Form.Group>
+
+                  <Form.Group className="mb-3" controlId="ControlPassword">
+                    <Form.Label style={{ fontSize: "13px" }}>
+                      Password
+                    </Form.Label>
+                    <Form.Control
+                      style={{ fontSize: "13px" }}
+                      type="password"
+                      value={password}
+                      placeholder="Password"
+                      onChange={(e) => setPassword(e.target.value)}
+                      required
+                    />
+                  </Form.Group>
+
+                  <Button
+                    variant="outline-light"
+                    type="submit"
+                    className="mt-3 w-100"
+                  >
+                    Submit
+                  </Button>
+                </Form>
+
+                <div className="text-center mt-3">
+                  <p style={{ fontSize: "13px" }}>
+                    Need an account? <Link to="/signup">Signup here</Link>.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      */}
+    </div>
+  );
+}
+
+export default Login;
+
+
+  /**
+           <h1 ref={ref}
+      style={{
+        fontSize: "4.5rem" ,
+        transform: isInView ? "none" : "translateX(-50px)",
+        opacity: isInView ? 1 : 0,
+        transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
+      }}
+
+      className='text-center text-white'>
+      <span><b><i style={{fontFamily:'Raleway',fontSize:'3.25rem', textShadow:'1px 1px 4px black'}}>Con</i></b></span>
+      <span className=' fw-bold' style={{ fontFamily:"Dancing Script", marginLeft:'-15px', color:' #e9008c', textShadow:'2px 2px 5px black'}}>Scribe</span>
+    
+   </h1>
+    */
+/**
+ * SIGNUP FORM
+ * 
+ *  const [firstname, setFirstname] = useState(""); 
+  const [lastname, setLastname] = useState(""); 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isSubscribed, setIsSubscribed] = useState(false);
   const [isChecked, setIsChecked] = useState(false); // Add state for checkbox
   const [error, setError] = useState("");
   const [redirect, setRedirect] = useState(false);  // Add redirect state
@@ -50,13 +348,9 @@ function Login() {
   // Redirect the user after successful login
   if (redirect) {
     return <Navigate to="/dashboard" />;
-  }
+  }*/
 
-  return (
- <div className="bg-secondary-subtle">
-
-    <MDBContainer fluid className='p-4'>
-
+/*  <MDBContainer fluid className='p-4'>
       <div className="row">
         <div className='col-sm-12 col-md-6 col-lg-6 text-center text-md-start d-flex flex-column justify-content-center'>
           <h1 className="my-5 display-3 fw-bold ls-tight px-3">
@@ -80,22 +374,62 @@ function Login() {
 
               <div className="row">
               <div className='col-sm-12 col-md-6 col-lg-6 text-center text-md-start d-flex flex-column justify-content-center'>
-                  <MDBInput wrapperClass='mb-4' label='First name' id='form1' type='text'/>
+                  <MDBInput 
+                  wrapperClass='mb-4' 
+                  label='First name' 
+                  value={firstname}
+                  type='text'
+                  id='firstname' 
+                 onChange={(e) => setFirstname(e.target.value)}
+                  />
                 </div>
 
                 <div className='col-sm-12 col-md-6 col-lg-6 text-center text-md-start d-flex flex-column justify-content-center'>
-                  <MDBInput wrapperClass='mb-4' label='Last name' id='form1' type='text'/>
+                  <MDBInput 
+                  wrapperClass='mb-4' 
+                  label='Last name' 
+                  type='text'
+                  value={lastname}
+                  id='lastname' 
+                  onChange={(e) => setLastname(e.target.value)}
+                  />
                 </div>
               </div>
 
-              <MDBInput wrapperClass='mb-4' label='Email' id='form1' type='email'/>
-              <MDBInput wrapperClass='mb-4' label='Password' id='form1' type='password'/>
+              <MDBInput 
+              wrapperClass='mb-4' 
+              label='Email'
+              type='email' 
+              value={email}
+              id='email' 
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              />
+
+              <MDBInput 
+              wrapperClass='mb-4' 
+              label='Password'
+              type='password'
+              value={password}
+              id='password' 
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              />
 
               <div className='d-flex justify-content-center mb-4'>
-                <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Subscribe to our newsletter' />
+                <MDBCheckbox 
+                name='flexCheck' 
+                label='Subscribe to our newsletter' 
+                type="checkbox"
+                value={isSubscribed} 
+                onChange={(e) => setIsSubscribed(e.target.checked)}
+                id='flexCheckDefault' 
+                />
               </div>
 
-              <MDBBtn className='w-100 mb-4' size='md'>sign up</MDBBtn>
+              <MDBBtn className='w-100 mb-4' 
+              size='md'>sign up
+              </MDBBtn>
 
               <div className="text-center">
                 <p>or sign up with:</p>
@@ -109,116 +443,4 @@ function Login() {
       </div>
 
     </MDBContainer>
-
-
-
-
- <div className="w3-container w3-content ">
-      <div className="row d-flex justify-content-center align-items-center w3-margin-bottom"
-      style={{padding:'40px'}} >
-<div className="col-sm-12 col-md-6 col-lg-6 text-md-start d-flex flex-column justify-content-center">
-<div className="container text-black" >
-  <AnimatedHeading/>
-  <h1 className="my-3 display-5 fw-bold ls-tight px-4">
-          CUSTOM RECRUITING TOOLS<br />
-            <span className="text-primary"><b>TO BUILD YOUR BRAND</b></span>
-          </h1>
-
-          <p className='px-4' style={{color: 'hsl(217, 10%, 50.8%)'}}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Eveniet, itaque accusantium odio, soluta, corrupti aliquam libero
-            veritatis? Dicta facilis sint aliquid ipsum atque?
-          </p>
-  </div>
-</div>
-        <div className="col-sm-12 col-md-6 col-lg-6 text-md-start d-flex flex-column justify-content-center" >
-          <div className="card text-black w3-light-grey" >
-<div className="card-body px-5 py-4">
-          <h3 className="fw-bold mb-2 text-center text-uppercase">Login</h3>
-          <p className="text-black-50 text-center mb-3"
-          style={{fontSize:'13px'}}>Please enter your login and password!</p>
-
-          {error && <p className="text-danger text-center">{error}</p>}
- 
-
-
-          <Form onSubmit={handleSubmit}>
-          <Form.Group className="mb-3" 
-      controlId="ControlEmail">
-        <Form.Label style={{fontSize:'13px'}}>Email address</Form.Label>
-        <Form.Control
-    type="email"
-    style={{fontSize:'13px'}}
-        value={email}
-        placeholder="johndoe@email.com"
-        onChange={(e) => setEmail(e.target.value)}
-        required />
-      </Form.Group>
-
-
-      <Form.Group className="mb-3" 
-      controlId="ControlPassword">
-        <Form.Label
-         style={{fontSize:'13px'}}>Password</Form.Label>
-        <Form.Control 
-        style={{fontSize:'13px'}}
-             type="password"
-             value={password}
-             placeholder="Password"
-             onChange={(e) => setPassword(e.target.value)}
-             required />
-      </Form.Group>
-
-      <Row className="d-flex align-items-center">
-                    <Col className="col-sm-12 col-md-12 col-lg-12 mt-3 justify-content-end">
-                      <div style={{ marginLeft: "5px" }}>
-                        <div
-                          style={{
-                            display: "flex",
-                            alignItems: "start", // Align checkbox and text vertically
-                            gap: "10px", // Add spacing between checkbox and text
-                          }}
-                        >
-                          <MDBCheckbox
-                            className="border border-2"
-                            style={{fontSize:'13px'}}
-                            labelStyle={{ fontSize: "0.7rem", color: "gray" }}
-                            id="terms"
-                            required
-                            name="terms"
-                            checked={isChecked} // Use the state to determine if the checkbox is checked
-                            onChange={(e) => setIsChecked(e.target.checked)} // Update state when checkbox is clicked
-                          />
-                        <div className=" text-secondary"
-                              style={{ fontSize: "13px" }}
-                            >
-                              By clicking submit, I consent to the <span> <TermsModal /> </span>                             
-                            </div>
-                        </div>
-                      </div>
-                    </Col>
-                  </Row>
-      <Button 
-      variant="outline-light"
-      type="submit"
-      className="mt-3 w-100">
-        Submit 
-      </Button>
-          </Form>
-
-          <div className="text-center mt-3">
-            <p style={{fontSize:'13px'}}>
-              Need an account? <Link to="/signup"
-              >Signup here</Link>.
-            </p>
-          </div>
-          </div>
-          </div>
-        </div>
-      </div>
-      </div>
-    </div>
-  );
-}
-
-export default Login;
+ */
