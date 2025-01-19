@@ -51,12 +51,11 @@ function Login() {
   }
 
   return (
-    <div className="bg-secondary-subtle">
+    <div className="w3-black">
       <style>
         {`
         .card {
           background-color: black;
-
         }
 
     .custom-wrapper-class {
@@ -80,10 +79,12 @@ function Login() {
 
   `}
       </style>
-      <div className="p-5 w3-container w3-content">
-        <div className="row d-flex justify-content-center align-items-center">
-          <div className="col-sm-12 col-md-7 col-lg-7  text-md-start d-flex flex-column justify-content-center align-items-center">
-            <div className="px-5 w3-hide-small w3-hide-medium">
+      <div className="w3-container w3-content">
+      <div className="w3-padding-24 ">
+        <div className="row d-flex align-items-center">
+          <div className="col-sm-12 col-md-7 col-lg-7 text-lg-start d-flex flex-column justify-content-center align-items-center">
+           <div>
+            <div className="px-5">
           
             <h1 className="display-1 fw-bold"
             style={{
@@ -102,11 +103,12 @@ function Login() {
           </p>
             </div>
           </div>
-
+</div>
           <div className="col-sm-12 col-md-5 col-lg-5 text-md-start d-flex flex-column justify-content-center align-items-center">
+         
             <div className="card">
+            <div className="px-3 border rounded">
               <div className="card-body">
-              <div className="px-5">
               <h1 ref={ref}
       style={{
         fontSize: "3.75rem", letterSpacing:'-1px',
@@ -119,8 +121,12 @@ function Login() {
 
       className='text-center fw-light text-white mb-0'>
      <b>con</b><span style={{color:'#e9008c', marginLeft:'-9px'}}>scribe.</span>
-   </h1>         
-   <h5 className="fw-normal text-white pt-4 mb-4" style={{letterSpacing: '1px', fontSize:'13px'}}><i className="fas fa-lock" style={{fontSize:'13px'}}></i> Sign into your account.</h5>
+   </h1>      
+   <div className="text-center text-secondary fw-light mb-3">
+   <p className="small">
+   Sign into your account.
+    </p>
+    </div>   
                 
    {error && <p className="text-danger text-center">{error}</p>}
 
@@ -170,7 +176,7 @@ function Login() {
                     Login
                   </Button>
 
-                <div className="text-center text-white mt-3">
+                <div className="text-center text-white my-2">
                   <p className=" small">
                   Don't have an account? <Link to="/signup" className=" link-secondary">Sign Up</Link>.
                   </p>
@@ -184,6 +190,7 @@ function Login() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

@@ -30,7 +30,7 @@ const TermsModal = () => {
         `}
     </style>
       {/* Trigger Link */}
-      <Link to="#"className="small link-secondary" onClick={handleShow}>
+      <Link to="#"className="link-secondary"  style={{fontSize: "13px"}} onClick={handleShow}>
         Terms of use
       </Link>
 
@@ -43,7 +43,7 @@ const TermsModal = () => {
           <p><strong>Effective Date:</strong> [Insert Date]</p>
 
           <p>
-            Welcome to [Your Company Name]! These Terms and Conditions govern your use of our digital development
+            Welcome to Conscribe! These Terms and Conditions govern your use of our digital development
             services tailored for recruiting purposes. By engaging our services, you agree to comply with the following
             terms. Please read them carefully.
           </p>

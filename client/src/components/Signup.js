@@ -40,7 +40,7 @@ function Signup() {
   };
 
   return (
-    <MDBContainer className="gradient-form" style={{ padding: "20px" }}>
+    <MDBContainer className="w3-black" style={{ padding: "20px" }}>
       <div className="row justify-content-center">
         <div className="col-md-6">
           <h1 className="text-center mb-4">Signup</h1>

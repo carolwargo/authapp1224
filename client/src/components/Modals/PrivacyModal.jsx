@@ -30,7 +30,7 @@ const PrivacyModal = () => {
       </style>
 
       {/* Trigger Link */}
-      <Link to="#" className="small link-secondary" onClick={handleShow}>
+      <Link to="#" className=" link-secondary"  style={{fontSize: "13px"}} onClick={handleShow}>
         Privacy Policy
       </Link>
 
