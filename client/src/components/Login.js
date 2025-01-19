@@ -82,25 +82,9 @@ function Login() {
       </style>
       <div className="p-5 w3-container w3-content">
         <div className="row d-flex justify-content-center align-items-center">
-          <div className="col-sm-12 col-md-7 col-lg-7 text-md-start d-flex flex-column justify-content-center align-items-center">
-            <div className="px-5">
-              {/** 
-            <h1 ref={ref}
-      style={{
-        fontSize: "6rem", 
-        letterSpacing:'-3px',
-        color:'black',
-        textShadow:'2px 2px 4px black',
-        transform: isInView ? "none" : "translateX(-50px)",
-        opacity: isInView ? 1 : 0,
-        transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
-      }}
-
-      className='fw-light mb-0'>
-     <b style={{ letterSpacing:'-6px'}}
-     >con</b><span style={{color:'#e9008c', marginLeft:'-12px'}}>scribe</span>.
-   </h1>
-*/}
+          <div className="col-sm-12 col-md-7 col-lg-7  text-md-start d-flex flex-column justify-content-center align-items-center">
+            <div className="px-5 w3-hide-small w3-hide-medium">
+          
             <h1 className="display-1 fw-bold"
             style={{
               fontFamily: 'Roboto', 
@@ -125,7 +109,7 @@ function Login() {
               <div className="px-5">
               <h1 ref={ref}
       style={{
-        fontSize: "4rem", letterSpacing:'-1px',
+        fontSize: "3.75rem", letterSpacing:'-1px',
         textShadow:
         '1px 1px 2px black, -1px -1px 2px black, 1px -1px 2px black, -1px  1px 2px black',
         transform: isInView ? "none" : "translateX(-50px)",
@@ -200,95 +184,6 @@ function Login() {
           </div>
         </div>
       </div>
-{/** 
-      <div className="w3-container w3-content ">
-        <div
-          className="row d-flex justify-content-center align-items-center w3-margin-bottom"
-          style={{ padding: "40px" }}
-        >
-          <div className="col-sm-12 col-md-6 col-lg-6 text-md-start d-flex flex-column justify-content-center">
-            <div className="container text-black">
-              <AnimatedHeading />
-              <h1 className="my-3 display-5 fw-bold ls-tight px-4">
-                CUSTOM RECRUITING TOOLS
-                <br />
-                <span className="text-primary">
-                  <b>TO BUILD YOUR BRAND</b>
-                </span>
-              </h1>
-
-              <p className="px-4" style={{ color: "hsl(217, 10%, 50.8%)" }}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Eveniet, itaque accusantium odio, soluta, corrupti aliquam
-                libero veritatis? Dicta facilis sint aliquid ipsum atque?
-              </p>
-            </div>
-          </div>
-          <div className="col-sm-12 col-md-6 col-lg-6 text-md-start d-flex flex-column justify-content-center">
-            <div className="card text-black w3-light-grey"
-            style={{borderRadius: '10px'}}>
-              <div className="card-body px-5 py-4">
-                <h3 className="fw-bold mb-2 text-center text-uppercase">
-                  Login
-                </h3>
-                <p
-                  className="text-black-50 text-center mb-3"
-                  style={{ fontSize: "13px" }}
-                >
-                  Please enter your login and password!
-                </p>
-
-                {error && <p className="text-danger text-center">{error}</p>}
-
-                <Form onSubmit={handleSubmit}>
-                  <Form.Group className="mb-3" controlId="ControlEmail">
-                    <Form.Label style={{ fontSize: "13px" }}>
-                      Email address
-                    </Form.Label>
-                    <Form.Control
-                      type="email"
-                      style={{ fontSize: "13px" }}
-                      value={email}
-                      placeholder="johndoe@email.com"
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                    />
-                  </Form.Group>
-
-                  <Form.Group className="mb-3" controlId="ControlPassword">
-                    <Form.Label style={{ fontSize: "13px" }}>
-                      Password
-                    </Form.Label>
-                    <Form.Control
-                      style={{ fontSize: "13px" }}
-                      type="password"
-                      value={password}
-                      placeholder="Password"
-                      onChange={(e) => setPassword(e.target.value)}
-                      required
-                    />
-                  </Form.Group>
-
-                  <Button
-                    variant="outline-light"
-                    type="submit"
-                    className="mt-3 w-100"
-                  >
-                    Submit
-                  </Button>
-                </Form>
-
-                <div className="text-center mt-3">
-                  <p style={{ fontSize: "13px" }}>
-                    Need an account? <Link to="/signup">Signup here</Link>.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      */}
     </div>
   );
 }
@@ -444,3 +339,94 @@ export default Login;
 
     </MDBContainer>
  */
+
+
+/** 
+      <div className="w3-container w3-content ">
+        <div
+          className="row d-flex justify-content-center align-items-center w3-margin-bottom"
+          style={{ padding: "40px" }}
+        >
+          <div className="col-sm-12 col-md-6 col-lg-6 text-md-start d-flex flex-column justify-content-center">
+            <div className="container text-black">
+              <AnimatedHeading />
+              <h1 className="my-3 display-5 fw-bold ls-tight px-4">
+                CUSTOM RECRUITING TOOLS
+                <br />
+                <span className="text-primary">
+                  <b>TO BUILD YOUR BRAND</b>
+                </span>
+              </h1>
+
+              <p className="px-4" style={{ color: "hsl(217, 10%, 50.8%)" }}>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Eveniet, itaque accusantium odio, soluta, corrupti aliquam
+                libero veritatis? Dicta facilis sint aliquid ipsum atque?
+              </p>
+            </div>
+          </div>
+          <div className="col-sm-12 col-md-6 col-lg-6 text-md-start d-flex flex-column justify-content-center">
+            <div className="card text-black w3-light-grey"
+            style={{borderRadius: '10px'}}>
+              <div className="card-body px-5 py-4">
+                <h3 className="fw-bold mb-2 text-center text-uppercase">
+                  Login
+                </h3>
+                <p
+                  className="text-black-50 text-center mb-3"
+                  style={{ fontSize: "13px" }}
+                >
+                  Please enter your login and password!
+                </p>
+
+                {error && <p className="text-danger text-center">{error}</p>}
+
+                <Form onSubmit={handleSubmit}>
+                  <Form.Group className="mb-3" controlId="ControlEmail">
+                    <Form.Label style={{ fontSize: "13px" }}>
+                      Email address
+                    </Form.Label>
+                    <Form.Control
+                      type="email"
+                      style={{ fontSize: "13px" }}
+                      value={email}
+                      placeholder="johndoe@email.com"
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                    />
+                  </Form.Group>
+
+                  <Form.Group className="mb-3" controlId="ControlPassword">
+                    <Form.Label style={{ fontSize: "13px" }}>
+                      Password
+                    </Form.Label>
+                    <Form.Control
+                      style={{ fontSize: "13px" }}
+                      type="password"
+                      value={password}
+                      placeholder="Password"
+                      onChange={(e) => setPassword(e.target.value)}
+                      required
+                    />
+                  </Form.Group>
+
+                  <Button
+                    variant="outline-light"
+                    type="submit"
+                    className="mt-3 w-100"
+                  >
+                    Submit
+                  </Button>
+                </Form>
+
+                <div className="text-center mt-3">
+                  <p style={{ fontSize: "13px" }}>
+                    Need an account? <Link to="/signup">Signup here</Link>.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      */

@@ -1,0 +1,34 @@
+.custom-navbar {
+    background-color: black !important;
+  }
+  
+  .custom-navbar .navbar-brand,
+  .custom-navbar .nav-link,
+  .custom-navbar .navbar-toggler-icon {
+    color: white !important;
+  }
+  
+  .custom-navbar .nav-link:hover {
+    color: #e9008c !important; /* Optional hover color */
+  }
+
+    .custom-navbar .nav-link {
+        border-color: white !important;
+        font-size: 13px !important;
+        font-size: 300  !important;
+    }
+
+   .navbar-brand {
+      border-color: white !important;
+      font-size: 15px !important;
+      font-size: 300  !important;
+  }
+
+    .custom-navbar .navbar-toggler {
+      border-color: white !important; /* Border around the toggle button */
+    }
+    
+    .custom-navbar .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml;charset=UTF8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='white' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
+    }
+    
