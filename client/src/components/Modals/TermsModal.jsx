@@ -30,7 +30,7 @@ const TermsModal = () => {
         `}
     </style>
       {/* Trigger Link */}
-      <Link to="#"className="link-secondary"  style={{fontSize: "13px"}} onClick={handleShow}>
+      <Link to="#"className="link-light"  style={{fontSize: "14px"}} onClick={handleShow}>
         Terms of use
       </Link>
 

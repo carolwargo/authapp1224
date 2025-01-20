@@ -80,38 +80,17 @@ function Login() {
   `}
       </style>
       <div className="w3-container w3-content">
-      <div className="w3-padding-24 ">
+      <div className="w3-padding-24">
         <div className="row d-flex align-items-center">
-          <div className="col-sm-12 col-md-7 col-lg-7 text-lg-start d-flex flex-column justify-content-center align-items-center">
-           <div>
-            <div className="px-5">
-          
-            <h1 className="display-1 fw-bold"
-            style={{
-              fontFamily: 'Roboto', 
-              textShadow:'2px 2px 4px black'
-              }}>
-            
-            <span className=" m-0 p-0">   </span>
-          Chart Your Journey <br />
-            <span style={{color:' #e9008c', textShadow:'2px 2px 4px black'}}>Build Your Brand</span>
+          <div className="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center align-items-center">
          
-          </h1>
-      
-          <p  style={{ color: "hsl(217, 10%, 50.8%)" }}>
-   <b style={{fontSize:'18px'}}>conscribedigital.com-</b> Digital Recruiting Services for Student-Athletes provides Unfiltered Guidance and a Seasoned Perspective Through a Unique Approach.
-          </p>
-            </div>
-          </div>
-</div>
-          <div className="col-sm-12 col-md-5 col-lg-5 text-md-start d-flex flex-column justify-content-center align-items-center">
-         
-            <div className="card">
-            <div className="px-3 border rounded">
+            <div className="card rounded" style={{width:'100%', maxWidth:'450px'}}>
+            <div className="px-3">
               <div className="card-body">
+
               <h1 ref={ref}
       style={{
-        fontSize: "3.75rem", letterSpacing:'-1px',
+        fontSize: "5rem", letterSpacing:'-2px',
         textShadow:
         '1px 1px 2px black, -1px -1px 2px black, 1px -1px 2px black, -1px  1px 2px black',
         transform: isInView ? "none" : "translateX(-50px)",
@@ -119,13 +98,14 @@ function Login() {
         transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
       }}
 
-      className='text-center fw-light text-white mb-0'>
-     <b>con</b><span style={{color:'#e9008c', marginLeft:'-9px'}}>scribe.</span>
+      className='text-center fw-light text-white mt-0 mb-0 pt-0'>
+     <b>con</b><span style={{color:'#e9008c', marginLeft:'-3px'}}>scribe.</span>
    </h1>      
-   <div className="text-center text-secondary fw-light mb-3">
-   <p className="small">
-   Sign into your account.
-    </p>
+
+   <div >
+   <h5 className="text-center text-secondary fw-light mb-4">
+   Login to your account.
+    </h5>
     </div>   
                 
    {error && <p className="text-danger text-center">{error}</p>}
@@ -138,7 +118,7 @@ function Login() {
                       Email address
                     </Form.Label>
                 <MDBInput
-                  wrapperClass="custom-wrapper-class text-white px-0"
+                  wrapperClass="custom-wrapper-class text-secondary px-0 mb-2"
                   type="email"
                   value={email}
                   placeholder="email@mail.com"
