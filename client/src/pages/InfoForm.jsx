@@ -33,7 +33,6 @@ function InfoForm() {
   const [handedness, setHandedness] = useState("");
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
- 
 
   const [testscores, setTestScores] = useState("");
   const [gpa, setGpa] = useState("");
@@ -108,16 +107,35 @@ function InfoForm() {
 
   return (
     <div className="info-form-container w3-black">
-      
       <style>
         {`
-  .custom-wrapper-class input, 
-  .custom-wrapper-class textarea {
-  {
-    color: white !important;
-    border: 1px solid white;
-    border-radius: 5px; /* For consistent border rounding */
-  }
+
+        .custom-input { 
+          padding-top: 4px;
+          padding-bottom: 4px;
+        }
+       
+label {
+  font-size: 1rem; /* Adjust to match your font size */
+  font-weight: bold; /* Optional: to make it bold */
+  font-style: italic; /* Optional: to make it italic */
+  color: gray; 
+
+}
+
+.custom-input::-webkit-input-placeholder {
+  font-size: 0.8rem;
+  font-weight: bold;
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.3);
+}
+
+textarea.custom-wrapper-class::placeholder {
+  font-size: 0.8rem;
+  font-weight: bold;
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.3);
+}
 
   `}
       </style>
@@ -131,45 +149,59 @@ function InfoForm() {
                 <div className="container w3-padding-large">
                   {/**start INTRO */}
                   <div className="container">
-                  <div className="w3-padding-large w3-padding-16 border">
-                    <h2 className="text-center"
-                      style={{fontFamily:'Montserrat, sans-serif',
-                        textShadow: ".5px .5px 1px white, -.5px -.5px 1px white",
-                      }}
+                    <div className="w3-padding-large w3-padding-16 border">
+                      <h2
+                        className="text-center"
+                        style={{
+                          fontFamily: "Montserrat, sans-serif",
+                          textShadow:
+                            ".5px .5px 1px white, -.5px -.5px 1px white",
+                        }}
                       >
-              TELL US ABOUT YOURSELF!
-                    </h2>
-                    <p className="text-center"
-                      style={{fontFamily:'Montserrat, sans-serif'}}
+                        TELL US ABOUT YOURSELF!
+                      </h2>
+                      <p
+                        className="text-center"
+                        style={{ fontFamily: "Montserrat, sans-serif" }}
                       >
-                      Providing accurate and up-to-date information is essential
-                      to optimize efficiency through the collaborative process.
-                    </p>
+                        Providing accurate and up-to-date information is
+                        essential to optimize efficiency through the
+                        collaborative process.
+                      </p>
 
-                    <h4 className="text-center"
-                      style={{fontFamily:'Montserrat, sans-serif'}}
+                      <h4
+                        className="text-center"
+                        style={{ fontFamily: "Montserrat, sans-serif" }}
                       >
-              DATA COLLECTION IN 2 EASY STEPS: 
-                    </h4>
-                    <p
-  className="text-center text-white text-opacity-50"
-  style={{ fontFamily: "Montserrat, sans-serif" }}
-> Digital Form will have 4 categories: Contact, Personal, Athletic, Academic Information. 
-                  Fill in the form fields, and press the submit button to share the data
-                      needed to get started. 
-                 <br />
-                  <i className=" small"  style={{ fontFamily: "Montserrat, sans-serif" }}>
-                 <b>DISCLAIMER: </b> All submitted data will be
-                      securely stored in your client profile, on our database and used to develop
-                      tailored recruiting solutions, assist with marketing, communicate with coaches, and more.
-                  </i>
-            </p>  
+                        DATA COLLECTION IN 2 EASY STEPS:
+                      </h4>
+                      <p
+                        className="text-center text-white text-opacity-50"
+                        style={{ fontFamily: "Montserrat, sans-serif" }}
+                      >
+                        {" "}
+                        Digital Form will have 4 categories: Contact, Personal,
+                        Athletic, Academic Information. Fill in the form fields,
+                        and press the submit button to share the data needed to
+                        get started.
+                        <br />
+                        <i
+                          className=" small"
+                          style={{ fontFamily: "Montserrat, sans-serif" }}
+                        >
+                          <b>DISCLAIMER: </b> All submitted data will be
+                          securely stored in your client profile, on our
+                          database and used to develop tailored recruiting
+                          solutions, assist with marketing, communicate with
+                          coaches, and more.
+                        </i>
+                      </p>
                     </div>
                   </div>
                   {/**end INTRO */}
 
                   <div
-                    className="information-form-container shadow rounded"
+                    className="infor-form-container"
                     style={{
                       backgroundColor: "rgb(243, 243, 243)",
                     }}
@@ -181,25 +213,28 @@ function InfoForm() {
 
                     <form onSubmit={handleSubmit}>
                       {/**start CONTACT*/}
-                
+
                       <div className="w3-container w3-padding-16">
-                      <h4
+                        <h4
                           className="mb-3 text-white fw-lighter"
                           style={{
-                            textShadow: "1px 1px 2px white, -1px 1px 2px white, -1px -1px 2px white",
+                            textShadow:
+                              "1px 1px 2px white, -1px 1px 2px white, -1px -1px 2px white",
                           }}
-                        >CONTACT INFORMATION
+                        >
+                          CONTACT INFORMATION
                         </h4>
                         <MDBRow className="contact-row">
                           <MDBCol className="col-sm-12 col-md-6 col-lg-6">
-                          <p
+                            <p
                               className="mt-2 mb-1 text-white"
                               style={{ marginLeft: "4px", fontSize: "0.9rem" }}
                             >
-                            FIRST NAME
+                              FIRST NAME
                             </p>
                             <MDBInput
                               wrapperClass="custom-wrapper-class text-secondary px-0 mb-2"
+                              className="custom-input"
                               type="text"
                               value={firstname}
                               placeholder="John"
@@ -212,10 +247,11 @@ function InfoForm() {
                               className="mt-2 mb-1 text-white"
                               style={{ marginLeft: "4px", fontSize: "0.9rem" }}
                             >
-                             LAST NAME
+                              LAST NAME
                             </p>
                             <MDBInput
                               wrapperClass="custom-wrapper-class text-secondary px-0 mb-2"
+                              className="custom-input"
                               type="text"
                               value={lastname}
                               placeholder="Doe"
@@ -231,10 +267,11 @@ function InfoForm() {
                               className="mt-2 mb-1 text-white"
                               style={{ marginLeft: "4px", fontSize: "0.9rem" }}
                             >
-                            EMAIL ADDRESS 
+                              EMAIL ADDRESS
                             </p>
                             <MDBInput
                               wrapperClass="custom-wrapper-class text-secondary px-0 mb-2"
+                              className="custom-input"
                               type="email"
                               value={email}
                               placeholder="mail@email.com"
@@ -247,10 +284,11 @@ function InfoForm() {
                               className="mt-2 mb-1 text-white"
                               style={{ marginLeft: "4px", fontSize: "0.9rem" }}
                             >
-                          PHONE NUMBER  
-                          </p>
+                              PHONE NUMBER
+                            </p>
                             <MDBInput
                               wrapperClass="custom-wrapper-class text-secondary px-0 mb-2"
+                              className="custom-input"
                               type="phone"
                               value={phone}
                               placeholder="(123)456-7890"
@@ -260,17 +298,18 @@ function InfoForm() {
                           </MDBCol>
                         </MDBRow>
 
-                        <MDBRow className="address2-row">
+                        <MDBRow className="contact-row">
                           <MDBCol className="col-sm-12 col-md-5 col-lg-5">
-                          <p
+                            <p
                               className="mt-2 mb-1 text-white"
                               style={{ marginLeft: "4px", fontSize: "0.9rem" }}
                             >
-                             STREET ADDRESS 
+                              STREET ADDRESS
                             </p>
 
                             <MDBInput
                               wrapperClass="custom-wrapper-class text-secondary px-0 mb-2"
+                              className="custom-input"
                               type="text"
                               value={streetaddress}
                               placeholder="12345 Main St"
@@ -279,15 +318,15 @@ function InfoForm() {
                             />
                           </MDBCol>
                           <MDBCol className="col-sm-12 col-md-3 col-lg-3">
-                 
                             <p
                               className="mt-2 mb-1 text-white"
                               style={{ marginLeft: "4px", fontSize: "0.9rem" }}
                             >
-                         CITY 
-                              </p>
+                              CITY
+                            </p>
                             <MDBInput
                               wrapperClass="custom-wrapper-class text-secondary px-0 mb-2"
+                              className="custom-input"
                               type="text"
                               value={city}
                               placeholder="Annapolis"
@@ -300,10 +339,11 @@ function InfoForm() {
                               className="mt-2 mb-1 text-white"
                               style={{ marginLeft: "4px", fontSize: "0.9rem" }}
                             >
-                             STATE
+                              STATE
                             </p>
                             <MDBInput
                               wrapperClass="custom-wrapper-class text-secondary px-0 mb-2"
+                              className="custom-input"
                               type="text"
                               value={state}
                               placeholder="Maryland"
@@ -316,10 +356,11 @@ function InfoForm() {
                               className="mt-2 mb-1 text-white"
                               style={{ marginLeft: "4px", fontSize: "0.9rem" }}
                             >
-                             ZIP CODE  
+                              ZIP CODE
                             </p>
                             <MDBInput
                               wrapperClass="custom-wrapper-class text-secondary px-0 mb-2"
+                              className="custom-input"
                               type="text"
                               value={zipcode}
                               placeholder="12345"
@@ -329,16 +370,20 @@ function InfoForm() {
                           </MDBCol>
                         </MDBRow>
 
-                        <MDBRow className="social-media-row">
+                        <MDBRow className="contact-row">
                           <MDBCol className="col-sm-12 col-md-4 col-lg-4">
                             <p
                               className="mt-2 mb-1 text-white"
                               style={{ marginLeft: "4px", fontSize: "0.9rem" }}
                             >
-                              X <i className="text-white text-opacity-50">(Twitter)</i>
+                              X{" "}
+                              <i className="text-white text-opacity-50">
+                                (Twitter)
+                              </i>
                             </p>
                             <MDBInput
                               wrapperClass="custom-wrapper-class text-secondary px-0 mb-2"
+                              className="custom-input"
                               type="text"
                               value={twitter}
                               placeholder="@Handle"
@@ -347,14 +392,15 @@ function InfoForm() {
                             />
                           </MDBCol>
                           <MDBCol className="col-sm-12 col-md-4 col-lg-4">
-                          <p
+                            <p
                               className="mt-2 mb-1 text-white"
                               style={{ marginLeft: "4px", fontSize: "0.9rem" }}
                             >
-                             INSTAGRAM
+                              INSTAGRAM
                             </p>
                             <MDBInput
                               wrapperClass="custom-wrapper-class text-secondary px-0 mb-2"
+                              className="custom-input"
                               type="text"
                               value={instagram}
                               placeholder="@Handle"
@@ -363,14 +409,15 @@ function InfoForm() {
                             />
                           </MDBCol>
                           <MDBCol className="col-sm-12 col-md-4 col-lg-4">
-                          <p
+                            <p
                               className="mt-2 mb-1 text-white"
                               style={{ marginLeft: "4px", fontSize: "0.9rem" }}
                             >
-                            FACEBOOK
+                              FACEBOOK
                             </p>
                             <MDBInput
                               wrapperClass="custom-wrapper-class text-secondary px-0 mb-2"
+                              className="custom-input"
                               type="text"
                               value={facebook}
                               placeholder="@Handle"
@@ -381,29 +428,41 @@ function InfoForm() {
                         </MDBRow>
                       </div>
                       {/**end CONTACT */}
-
                       <div className="w3-padding-large w3-padding-16">
-                        <hr />
+                        <hr
+                          style={{
+                            border: "none",
+                            height: "2px",
+                            backgroundColor: "white",
+                            boxShadow:
+                              "inset 4px 4px 12px rgba(255, 255, 255, 0.3)",
+                            margin: "16px 0",
+                          }}
+                        />
                       </div>
 
                       {/**start PERSONAL */}
                       <div className="w3-container w3-content w3-padding-16">
-                      <h4
+                        <h4
                           className="mb-3 text-white fw-lighter"
                           style={{
-                            textShadow: "1px 1px 2px white, -1px 1px 2px white, -1px -1px 2px white",
+                            textShadow:
+                              "1px 1px 2px white, -1px 1px 2px white, -1px -1px 2px white",
                           }}
-                        >PERSONAL INFORMATION
+                        >
+                          PERSONAL INFORMATION
                         </h4>
                         <MDBRow className="highschool-row">
                           <MDBCol className="col-sm-12 col-md-8 col-lg-8">
-                            <p className="mt-2 mb-1 text-white"
+                            <p
+                              className="mt-2 mb-1 text-white"
                               style={{ marginLeft: "4px", fontSize: "0.9rem" }}
                             >
-                          CURRENT HIGH SCHOOL
+                              CURRENT HIGH SCHOOL
                             </p>
                             <MDBInput
                               wrapperClass="custom-wrapper-class text-secondary px-0 mb-2"
+                              className="custom-input"
                               type="text"
                               value={highschool}
                               placeholder="Youtown High School"
@@ -412,13 +471,15 @@ function InfoForm() {
                             />
                           </MDBCol>
                           <MDBCol className="col-sm-12 col-md-4 col-lg-4">
-                          <p className="mt-2 mb-1 text-white"
+                            <p
+                              className="mt-2 mb-1 text-white"
                               style={{ marginLeft: "4px", fontSize: "0.9rem" }}
                             >
-                            LOCATED AT
+                              LOCATED AT
                             </p>
                             <MDBInput
                               wrapperClass="custom-wrapper-class text-secondary px-0 mb-2"
+                              className="custom-input"
                               type="text"
                               value={hslocation}
                               placeholder="'HS City, State'"
@@ -430,14 +491,16 @@ function InfoForm() {
 
                         <MDBRow className="highschool-row">
                           <MDBCol className="col-sm-12 col-md-4 col-lg-4">
-                          <p className="mt-2 mb-1 text-white"
+                            <p
+                              className="mt-2 mb-1 text-white"
                               style={{ marginLeft: "4px", fontSize: "0.9rem" }}
                             >
                               GRAD YEAR
                             </p>
-                           
+
                             <MDBInput
                               wrapperClass="custom-wrapper-class text-secondary px-0 mb-2"
+                              className="custom-input"
                               type="text"
                               value={gradyear}
                               placeholder="'2029'"
@@ -446,14 +509,16 @@ function InfoForm() {
                             />
                           </MDBCol>
                           <MDBCol className="col-sm-12 col-md-4 col-lg-4">
-                          <p className="mt-2 mb-1 text-white"
+                            <p
+                              className="mt-2 mb-1 text-white"
                               style={{ marginLeft: "4px", fontSize: "0.9rem" }}
                             >
                               DATE OF BIRTH
                             </p>
-                            
+
                             <MDBInput
                               wrapperClass="custom-wrapper-class text-secondary px-0 mb-2"
+                              className="custom-input"
                               type="text"
                               value={dob}
                               placeholder="'01/01/2001'"
@@ -463,13 +528,15 @@ function InfoForm() {
                           </MDBCol>
 
                           <MDBCol className="col-sm-12 col-md-4 col-lg-4">
-                            <p className="mt-2 mb-1 text-white"
+                            <p
+                              className="mt-2 mb-1 text-white"
                               style={{ marginLeft: "4px", fontSize: "0.9rem" }}
                             >
-                         CURRENT YEAR
+                              CURRENT YEAR
                             </p>
                             <MDBInput
                               wrapperClass="custom-wrapper-class text-secondary px-0 mb-2"
+                              className="custom-input"
                               type="text"
                               value={currenyr}
                               placeholder="'Sophomore'"
@@ -480,10 +547,11 @@ function InfoForm() {
 
                         <MDBRow className="athletic-textarea-row">
                           <MDBCol className="col-sm-12 col-md-12 col-lg-12">
-                          <p className="mt-2 mb-1 text-white"
+                            <p
+                              className="mt-2 mb-1 text-white"
                               style={{ marginLeft: "4px", fontSize: "0.9rem" }}
                             >
-                            PERSONAL BIO...
+                              PERSONAL BIO...
                             </p>
                             <textarea
                               className="form-control custom-wrapper-class mb-2"
@@ -503,12 +571,14 @@ function InfoForm() {
 
                       {/**start ATHLETIC DONE */}
                       <div className="w3-container w3-content w3-padding-16">
-                      <h4
+                        <h4
                           className="mb-3 text-white fw-lighter"
                           style={{
-                            textShadow: "1px 1px 2px white, -1px 1px 2px white, -1px -1px 2px white",
+                            textShadow:
+                              "1px 1px 2px white, -1px 1px 2px white, -1px -1px 2px white",
                           }}
-                        >ATHLETIC INFORMATION
+                        >
+                          ATHLETIC INFORMATION
                         </h4>
                         <MDBRow className="sport-row">
                           <MDBCol className="col-sm-12 col-md-4 col-lg-4">
@@ -516,10 +586,14 @@ function InfoForm() {
                               className="mt-2 mb-1 text-white"
                               style={{ marginLeft: "4px", fontSize: "0.9rem" }}
                             >
-                             SPORT OF INTEREST <i className="text-white text-opacity-50">(JV/Varsity)</i> 
+                              SPORT OF INTEREST{" "}
+                              <i className="text-white text-opacity-50">
+                                (JV/Varsity)
+                              </i>
                             </p>
                             <MDBInput
                               wrapperClass="custom-wrapper-class text-secondary px-0 mb-2"
+                              className="custom-input"
                               type="text"
                               value={sport}
                               placeholder="'Wrestling'"
@@ -529,14 +603,18 @@ function InfoForm() {
                           </MDBCol>
 
                           <MDBCol className="col-sm-12 col-md-4 col-lg-4">
-                          <p
+                            <p
                               className="mt-2 mb-1 text-white"
                               style={{ marginLeft: "4px", fontSize: "0.9rem" }}
                             >
-                             TEAM <i className="text-white text-opacity-50">(JV/Varsity)</i> 
+                              TEAM{" "}
+                              <i className="text-white text-opacity-50">
+                                (JV/Varsity)
+                              </i>
                             </p>
                             <MDBInput
                               wrapperClass="custom-wrapper-class text-secondary px-0 mb-2"
+                              className="custom-input"
                               type="text"
                               value={hslevel}
                               placeholder="'Varsity'"
@@ -549,10 +627,11 @@ function InfoForm() {
                               className="mt-2 mb-1 text-white"
                               style={{ marginLeft: "4px", fontSize: "0.9rem" }}
                             >
-                            HEIGHT
+                              HEIGHT
                             </p>
                             <MDBInput
                               wrapperClass="custom-wrapper-class text-secondary px-0 mb-2"
+                              className="custom-input"
                               type="text"
                               value={height}
                               placeholder="'6ft. 2in.'"
@@ -565,10 +644,11 @@ function InfoForm() {
                               className="mt-2 mb-1 text-white"
                               style={{ marginLeft: "4px", fontSize: "0.9rem" }}
                             >
-                            WEIGHT
+                              WEIGHT
                             </p>
                             <MDBInput
                               wrapperClass="custom-wrapper-class text-secondary px-0 mb-2"
+                              className="custom-input"
                               type="text"
                               value={weight}
                               placeholder="'210lbs'"
@@ -592,6 +672,7 @@ function InfoForm() {
                             </p>
                             <MDBInput
                               wrapperClass="custom-wrapper-class text-secondary px-0 mb-2"
+                              className="custom-input"
                               type="text"
                               value={primaryposition}
                               placeholder="'Full Back'"
@@ -612,8 +693,9 @@ function InfoForm() {
                                 (secondary){" "}
                               </i>
                             </p>
-                            <MDBInput
-                              wrapperClass="custom-wrapper-class text-white px-0"
+                            <MDBInput     
+                            wrapperClass="custom-wrapper-class text-secondary px-0 mb-2"
+                              className="custom-input"
                               type="text"
                               value={secondaryposition}
                               placeholder="'Guard'"
@@ -624,11 +706,14 @@ function InfoForm() {
                             />
                           </MDBCol>
                           <MDBCol className="col-sm-12 col-md-4 col-lg-4">
-                            <p className="mt-2 mb-1 text-white"
+                            <p
+                              className="mt-2 mb-2 text-white"
                               style={{ marginLeft: "4px", fontSize: "0.9rem" }}
                             >
-                                  HANDEDNESS
-                              <i className=" text-light text-opacity-50"> (select one)
+                              HANDEDNESS
+                              <i className=" text-light text-opacity-50">
+                                {" "}
+                                (select one)
                               </i>
                             </p>
                             <Form.Group controlId="handedness-group">
@@ -675,7 +760,7 @@ function InfoForm() {
                               className="form-control custom-wrapper-class mb-2"
                               rows="5"
                               value={athleticextra}
-                              placeholder="'honors, awards, etc...'"
+                               placeholder="'Honors, Awards, Clubs, Etc...'"
                               onChange={(e) => setAthleticExtra(e.target.value)}
                             ></textarea>
                           </MDBCol>
@@ -689,24 +774,30 @@ function InfoForm() {
 
                       {/**start ACADEMIC */}
                       <div className="w3-container w3-content w3-padding-16">
-                       
-                      <h4
+                        <h4
                           className="mb-3 text-white fw-lighter"
                           style={{
-                            textShadow: "1px 1px 2px white, -1px 1px 2px white, -1px -1px 2px white",
+                            textShadow:
+                              "1px 1px 2px white, -1px 1px 2px white, -1px -1px 2px white",
                           }}
-                        >ACADEMIC INFORMATION
+                        >
+                          ACADEMIC INFORMATION
                         </h4>
 
                         <MDBRow className="acadmics-row">
                           <MDBCol className="col-sm-12 col-md-4 col-lg-4">
-                          <p className="mt-2 mb-1 text-white"
+                            <p
+                              className="mt-2 mb-1 text-white"
                               style={{ marginLeft: "4px", fontSize: "0.9rem" }}
                             >
-                              ACT/SAT <i className="text-white text-opacity-50">(Scores)</i> 
+                              ACT/SAT{" "}
+                              <i className="text-white text-opacity-50">
+                                (Scores)
+                              </i>
                             </p>
                             <MDBInput
                               wrapperClass="custom-wrapper-class text-secondary px-0 mb-2"
+                              className="custom-input"
                               type="text"
                               value={testscores}
                               placeholder="'30/1400'"
@@ -715,28 +806,32 @@ function InfoForm() {
                             />
                           </MDBCol>
                           <MDBCol className="col-sm-12 col-md-4 col-lg-4">
-                            <p className="mt-2 mb-1 text-white"
+                            <p
+                              className="mt-2 mb-1 text-white"
                               style={{ marginLeft: "4px", fontSize: "0.9rem" }}
                             >
-                         NCAA ID#
+                              NCAA ID#
                             </p>
                             <MDBInput
                               wrapperClass="custom-wrapper-class text-secondary px-0 mb-2"
+                              className="custom-input"
                               type="text"
                               value={ncaaid}
                               placeholder="'01012001'"
                               onChange={(e) => setNcaaid(e.target.value)}
                             />
                           </MDBCol>
-                        
+
                           <MDBCol className="col-sm-12 col-md-4 col-lg-4">
-                          <p className="mt-2 mb-1 text-white"
+                            <p
+                              className="mt-2 mb-1 text-white"
                               style={{ marginLeft: "4px", fontSize: "0.9rem" }}
                             >
                               GPA
                             </p>
                             <MDBInput
                               wrapperClass="custom-wrapper-class text-secondary px-0 mb-2"
+                              className="custom-input"
                               type="text"
                               value={gpa}
                               placeholder="'3.9'"
@@ -748,7 +843,8 @@ function InfoForm() {
 
                         <MDBRow className="academic-textarea-row">
                           <MDBCol className="col-sm-12 col-md-12 col-lg-12">
-                            <p className="mt-2 mb-1 text-white"
+                            <p
+                              className="mt-2 mb-1 text-white"
                               style={{ marginLeft: "4px", fontSize: "0.9rem" }}
                             >
                               ADDITIONAL INFO
@@ -777,53 +873,52 @@ function InfoForm() {
                                   alignItems: "start", // Align checkbox and text vertically
                                   gap: "10px", // Add spacing between checkbox and text
                                 }}
-                              >
-                        
-                            
-                              </div>
+                              ></div>
                             </div>
                           </MDBCol>
                         </MDBRow>
                         <div className=" text-center align-items-center small text-secondary my-2 mx-5">
-                      <span>
-                      <input
-  type="checkbox"
-  value={isChecked}
-  id="ischecked"
-  name="ischecked"
-  onChange={(e) => setIsChecked(e.target.value)}
-  required
-/>
-</span>
-<span className="mx-1" style={{ fontSize: "16px" }}>
-  By clicking submit, you confirm that the information provided is accurate and acknowledge your agreement to our{" "}
-</span>
-<span>
-  <TermsModal />
-</span>{" "}
-
-                      <span style={{ fontSize: "13px" }}> and </span>     <span>
-                        <PrivacyModal />
-                      </span>
-                    </div>
+                          <span>
+                            <input
+                              type="checkbox"
+                              value={isChecked}
+                              id="ischecked"
+                              name="ischecked"
+                              onChange={(e) => setIsChecked(e.target.value)}
+                              required
+                            />
+                          </span>
+                          <span className="mx-1" style={{ fontSize: "16px" }}>
+                            By clicking submit, you confirm that the information
+                            provided is accurate and acknowledge your agreement
+                            to our{" "}
+                          </span>
+                          <span>
+                            <TermsModal />
+                          </span>{" "}
+                          <span style={{ fontSize: "13px" }}> and </span>{" "}
+                          <span>
+                            <PrivacyModal />
+                          </span>
+                        </div>
                         <Button
-                      variant="outline-light"
-                      type="submit"
-                      className="my-3 w-100"
-                      style={{ fontSize: "16px" }}
-                    >
-                    Submit
-                    </Button>
-                    <div className="text-center align-items-center small text-secondary my-2 mx-2">
-                   Have Questions? 
-                    <Link className="mx-1 link-light" >
-                     Contact Us for Answers
-                    </Link>
-               .
-                    </div>
+                          variant="outline-light"
+                          type="submit"
+                          className="my-3 w-100"
+                          style={{ fontSize: "16px" }}
+                        >
+                          Submit
+                        </Button>
+                        <div className="text-center align-items-center small text-secondary my-2 mx-2">
+                          Have Questions?
+                          <Link className="mx-1 link-light">
+                            Contact Us for Answers
+                          </Link>
+                          .
+                        </div>
                       </div>
                       {/**END CHECKBOX AND SUBMIT */}
- </form>
+                    </form>
                     {/**END form */}
                   </div>
                 </div>
@@ -1470,17 +1565,17 @@ function InfoForm() {
                     >
                       Register
                     </Button>
-    {/**END CHECKBOX AND SUBMIT */}
-  
+                    {/**END CHECKBOX AND SUBMIT */}
+
                     <div className="text-center text-white my-2">
                       <p style={{ fontSize: "14px" }}>
-                        Already have an account? 
+                        Already have an account?
                         <Link to="/login" className=" link-light">
                           Login
                         </Link>
                       </p>
                     </div>
-                  
+
                     <div>
                       <Button
                         variant="outline-light"
@@ -1492,7 +1587,6 @@ function InfoForm() {
                       </Button>
                     </div>
                   </div>
-              
                 </form>
                 {/**END form */}
               </div>
