@@ -9,15 +9,10 @@ import Home from "./pages/Home";
 import ErrorBoundary from "./ErrorBoundary";
 import InfoForm from "./pages/InfoForm.jsx";
 
-// Info Layout
-import InfoLayout from "./components/Layout/InfoLayout";
-// Info Layout Slides
-import IntroSlide from "./components/InfoForm/IntroSlide";
-import ContactSlide from "./components/InfoForm/ContactSlide";
-import PersonalSlide from "./components/InfoForm/PersonalSlide";
-import AthleticSlide from "./components/InfoForm/AthleticSlide";
-import AcademicSlide from "./components/InfoForm/AcademicSlide";
-import FinishedSlide from "./components/InfoForm/FinishedSlide";
+// Profile Layout
+import ProfileLayout from "./components/Layout/ProfileLayout";
+import ProfilePage from "./pages/ProfilePage";  
+
 import Dashboard from "./pages/Dashboard.js";
 import UserNav from "./components/UserNav.jsx";
 
@@ -39,13 +34,11 @@ function App() {
             {/* Info Layout with Nested Routes */}
             {/*infolayout/infoform */}
 
-            <Route path="/infolayout" element={<InfoLayout />}>
-              <Route path="intro" element={<IntroSlide />} />
-              <Route path="contact" element={<ContactSlide />} />
-              <Route path="personal" element={<PersonalSlide />} />
-              <Route path="athletic" element={<AthleticSlide />} />
-              <Route path="academic" element={<AcademicSlide />} />
-              <Route path="finished" element={<FinishedSlide />} />
+
+
+
+            <Route path="/profilelayout" element={<ProfileLayout />}>
+              <Route path="profile" element={<ProfilePage />} />
             </Route>
            
             {/* Catch-All for Undefined Routes */}

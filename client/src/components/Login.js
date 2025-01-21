@@ -47,7 +47,7 @@ function Login() {
 
   // Redirect the user after successful login
   if (redirect) {
-    return <Navigate to="/dashboard" />;
+    return <Navigate to="/profile" />;
   }
 
   return (
