@@ -12,6 +12,13 @@ const userSchema = new mongoose.Schema({
   username: { type: String, required: false },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
+  pdfLinks: {
+    resume: { type: String, required: true },
+    schedules: { type: String, required: true },
+    transcripts: { type: String, required: true },
+    references: { type: String, required: true },
+    performance: { type: String, required: true },
+  },
 });
 
 // Compare input password with the hashed password in the database

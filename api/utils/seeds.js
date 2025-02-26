@@ -32,18 +32,31 @@ const seedUsers = [
     email: 'alice.smith@example.com',
     password: bcrypt.hashSync('password123', 10),
     isAdmin: false,
+    pdfLinks: {
+      transcripts: "/assets/PDF/Transcripts/Transcripts.pdf",
+      references: "/assets/PDF/References/References.pdf",
+      performance: "/assets/PDF/Performance/Performance.pdf",
+    },
   },
   {
     username: 'Bob Jones',
    email: 'bobjones@example.com',
     password: bcrypt.hashSync('password123', 10),
     isAdmin: false,
+    schedules: "/assets/PDF/Schedules/Schedules.pdf",
   },
   {
     username: 'John Apple',
     email: "john@example.com",
     password: bcrypt.hashSync('password123', 10),
     isAdmin: false,
+    pdfLinks: {
+      resume: "/assets/PDF/PlayerResume.pdf",
+      schedules: "/assets/PDF/Schedules/Schedules.pdf",
+      transcripts: "/assets/PDF/Transcripts/Transcripts.pdf",
+      references: "/assets/PDF/References/References.pdf",
+      performance: "/assets/PDF/Performance/Performance.pdf",
+    },
   },
   {
     username: 'Jane Spot',

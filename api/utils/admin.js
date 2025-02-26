@@ -1,7 +1,10 @@
-//api/utils/admin.js
 const adminOnly = (req, res, next) => {
   if (!req.user) {
     return res.status(401).json({ error: 'Unauthorized: No user data' });
+  }
+
+  if (req.user.isAdmin === undefined) {
+    return res.status(403).json({ error: 'Access Denied: Invalid permissions' });
   }
 
   if (req.user.isAdmin) {
@@ -11,4 +14,3 @@ const adminOnly = (req, res, next) => {
   res.status(403).json({ error: 'Access Denied: Admins Only' });
 };
 
-module.exports = adminOnly;

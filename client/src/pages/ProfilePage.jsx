@@ -1,4 +1,43 @@
-import React, { useContext, useState } from "react";
+import React, { useContext,  useEffect } from "react";
+import { UserContext } from "../context/UserContext";
+import { Link, useNavigate } from "react-router-dom";
+
+function ProfilePage() {
+  const { user, setUser } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const loggedInUser = JSON.parse(localStorage.getItem("user"));
+    if (loggedInUser && !user) {
+      setUser(loggedInUser); // Synchronize context with localStorage
+    } else if (!loggedInUser && !user) {
+      navigate("/login"); // Redirect if no user is logged in
+    }
+  }, [user, setUser, navigate]);
+
+  if (!user) {
+    return (
+      <p className="text-white">
+        Please <Link to="/login">log in</Link> to view your profile.
+      </p>
+    );
+  }
+
+  return (
+    <div id="user-profile">
+      <h1>Welcome, {user.name}!</h1>
+      <p>Email: {user.email}</p>
+      <Link to="/logout" onClick={() => setUser(null)}>
+        Logout
+      </Link>
+    </div>
+  );
+}
+
+export default ProfilePage;
+
+
+/**import React, { useContext, useState } from "react";
 import { UserContext } from "../context/UserContext";
 import { Link } from "react-router-dom";
 import Intake from "../components/InfoForm/Intake";
@@ -22,7 +61,7 @@ function ProfilePage() {
       <h1>Welcome, {user.name}!</h1>
       <p>Email: {user.email}</p>
 
-      {/* Navbar */}
+   
       <div className="w3-top">
         <div className="w3-bar w3-theme-d2 w3-left-align w3-large">
           <button
@@ -87,7 +126,7 @@ function ProfilePage() {
         </div>
       </div>
 
-      {/* Navbar on small screens */}
+   
       {isNavOpen && (
         <div id="navDemo" className="w3-bar-block w3-theme-d2 w3-large">
           <a href="/" className="w3-bar-item w3-button w3-padding-large">
@@ -104,8 +143,6 @@ function ProfilePage() {
           </a>
         </div>
       )}
-
-      {/* Page Content */}
       <div className="container">
         <div className="row">
           <div className="col-sm-12 col-md-4 col-lg-4"></div>
@@ -113,11 +150,10 @@ function ProfilePage() {
           <div className="col-sm-12 col-md-4 col-lg-4"></div>
         </div>
       </div>
-
-      {/* Intake Form */}
       <Intake />
     </div>
   );
 }
 
 export default ProfilePage;
+*/

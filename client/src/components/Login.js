@@ -11,8 +11,6 @@ import {MDBInput} from "mdb-react-ui-kit";
 import '../App.css'; // Import your CSS file
 
 
-  
-
 function Login() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false});
