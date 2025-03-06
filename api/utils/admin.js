@@ -14,3 +14,4 @@ const adminOnly = (req, res, next) => {
   res.status(403).json({ error: 'Access Denied: Admins Only' });
 };
 
+module.exports = adminOnly; // Exporting the function

@@ -6,6 +6,11 @@ const requireAuth = require('../utils/auth'); // Middleware to verify JWT
 const adminOnly = require('../utils/admin'); // Middleware for admin-only routes
 const router = express.Router();
 
+
+// ✅ Debugging middleware type
+console.log('requireAuth type:', typeof requireAuth); // Should log 'function'
+console.log('adminOnly type:', typeof adminOnly); // Should log 'function'
+
 // Admin Route to Get All Users (Excludes password field for security)
 //'req' in async (req, res) is not lit up in the code below
 router.get('/admin/users', requireAuth, adminOnly, async (req, res) => {
