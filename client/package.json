@@ -31,7 +31,7 @@
     "react-dom": "^18.0.0",
     "react-redirect": "^1.0.0",
     "react-router-dom": "^7.1.1",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "react-select": "^5.9.0"
   },
   "scripts": {
